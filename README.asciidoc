@@ -1,0 +1,16 @@
+Users define interface
+methods represent "points of interest"
+method parameters are key/values
+requires java8 with -paranames compiler option
+methods can optionally return (one of multiple predefined) type that allows to add custom message
+otherwise no message is supposed to be given (no strings!)
+log-levels/redirects/filtering based on interfaces (maybe methods later?)
+json output for elasticsearch (timestamps are important)
+xml output?
+binary output?
+static class called "Interested" to write log messages on the fly (w/ builder pattern)
+ - Interested.in(INTERFACE.class) /* returns INTERFACE instance */.userDefinedMethod(param, param);
+ - Interested.with(additionalSettings..).in(INTERFACE.class).userDefinedMethod(param, param);
+
+name:
+- thats-interesting (TI)
