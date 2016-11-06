@@ -1,6 +1,9 @@
 package de.xn__ho_hia.interesting;
 
-import de.xn__ho_hia.interesting.dsl.LoggerBuilder;
+import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.delegate;
+import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.javaUtilLogging;
+import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.javaUtilLoggingWarning;
+import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.systemOut;
 
 /**
  *
@@ -15,7 +18,12 @@ public class Interested {
      */
     public static final <LOGGER> LoggerBuilder<LOGGER> in(final Class<LOGGER> logger) {
         return new LoggerBuilder<>(logger)
-                .invocationHandler(new SystemOutInvocationHandler());
+                .invocationHandler(delegate(
+                        systemOut(),
+                        systemOut(),
+                        javaUtilLogging(),
+                        javaUtilLogging(),
+                        javaUtilLoggingWarning()));
     }
 
 }

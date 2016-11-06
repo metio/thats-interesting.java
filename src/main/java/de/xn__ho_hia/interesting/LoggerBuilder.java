@@ -1,4 +1,4 @@
-package de.xn__ho_hia.interesting.dsl;
+package de.xn__ho_hia.interesting;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
