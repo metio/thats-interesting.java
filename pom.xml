@@ -1,84 +1,60 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github.sebhoss.models</groupId>
-  <artifactId>common-models</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>Models :: Person</name>
-  <description>Person related properties</description>
-  
-  <properties>
-    <!-- These properties will be set by the Maven Dependency plugin -->
-    <!-- Change to jdk7 if using Java 7 -->
-    <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
-    <!-- Uncomment to use the type annotations compiler. -->
-    <!-- <typeAnnotationsJavac>${org.checkerframework:compiler:jar}</typeAnnotationsJavac> -->
-</properties>
 
-   <dependencies>
-   		<!-- http://types.cs.washington.edu/checker-framework/current/checker-framework-manual.html#maven -->
-        <!-- annotations from the Checker Framework: nullness, interning, locking, ... -->
+  <!-- ordering follows https://maven.apache.org/developers/conventions/code.html#POM_Code_Convention -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                                 PARENT                                  -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- https://maven.apache.org/pom.html#Inheritance -->
+  <parent>
+    <groupId>de.xn--ho-hia.maven.parents</groupId>
+    <artifactId>maven-parents-java-prototype</artifactId>
+    <version>2016.08.20-000508</version>
+  </parent>
+
+  <groupId>de.xn--ho-hia.thats-interesting</groupId>
+  <artifactId>thats-interesting.java</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>That's Interesting</name>
+  <description>Strongly-types logging framework</description>
+
+    <properties>
+        <junit.platform.version>1.0.0-M2</junit.platform.version>
+    </properties>
+
+    <dependencies>
         <dependency>
-            <groupId>org.checkerframework</groupId>
-            <artifactId>checker-qual</artifactId>
-            <version>1.9.13</version>
+            <groupId>de.xn--ho-hia.strings</groupId>
+            <artifactId>strings.java</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.checkerframework</groupId>
-            <artifactId>checker</artifactId>
-            <version>1.9.13</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
         </dependency>
-        <!-- The type annotations compiler - uncomment if desired -->
-        <!-- <dependency>
-            <groupId>org.checkerframework</groupId>
-            <artifactId>compiler</artifactId>
-            <version>1.9.13</version>
-        </dependency> -->
-        <!-- The annotated JDK to use (change to jdk7 if using Java 7) -->
         <dependency>
-            <groupId>org.checkerframework</groupId>
-            <artifactId>jdk8</artifactId>
-            <version>1.9.13</version>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
     <build>
-    	<plugins>
-    		<plugin>
-        <!-- This plugin will set properties values using dependency information -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>2.3</version>
-        <executions>
-            <execution>
-                <goals>
-                    <goal>properties</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
-    
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
-        <configuration>
-            <!-- Change source and target to 1.7 if using Java 7 -->
-            <source>1.8</source>
-            <target>1.8</target>
-            <fork>true</fork>
-            <annotationProcessors>
-                <!-- Add all the checkers you want to enable here -->
-                <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
-            </annotationProcessors>
-            <compilerArgs>
-                <!-- location of the annotated JDK, which comes from a Maven dependency -->
-                <arg>-Xbootclasspath/p:${annotatedJdk}</arg>
-                <!-- Uncomment the following line to use the type annotations compiler. -->
-                <!-- <arg>-J-Xbootclasspath/p:${typeAnnotationsJavac}</arg> -->
-            </compilerArgs>
-        </configuration>
-    </plugin>
-    		
-    	</plugins>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit.platform.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
     </build>
 
 </project>
