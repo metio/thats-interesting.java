@@ -3,9 +3,7 @@ package de.xn__ho_hia.interesting.handler;
 import static de.xn__ho_hia.interesting.converter.StandardConverters.string;
 
 import java.lang.reflect.InvocationHandler;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.logging.Logger;
 
 import de.xn__ho_hia.interesting.converter.MethodInvocationConverter;
 import de.xn__ho_hia.interesting.sink.StandardSinks;
@@ -31,29 +29,6 @@ public final class StandardInvocationHandlers {
      */
     public static final InvocationHandler systemOut() {
         return stringFormat(StandardSinks.systemOut());
-    }
-
-    /**
-     * @return An invocation handler that prints method invocations to java.util.logging
-     */
-    public static final InvocationHandler javaUtilLogging() {
-        return stringFormat(StandardSinks.globalLogger());
-    }
-
-    /**
-     * @return An invocation handler that prints method invocations to java.util.logging
-     */
-    public static final InvocationHandler javaUtilLoggingWarning() {
-        return javaUtilLogging((logger, message) -> logger.warning(message));
-    }
-
-    /**
-     * @param sink
-     *            The sink to use.
-     * @return An invocation handler that prints method invocations to java.util.logging
-     */
-    public static final InvocationHandler javaUtilLogging(final BiConsumer<Logger, String> sink) {
-        return stringFormat(StandardSinks.globalLogger(sink));
     }
 
     /**

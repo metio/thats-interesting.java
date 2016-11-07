@@ -19,7 +19,7 @@ public class InterestedTest {
         TestInterface instance;
 
         // when
-        instance = Interested.in(TestInterface.class).createLogger();
+        instance = Interested.in(TestInterface.class);
         instance.someMethod("test"); //$NON-NLS-1$
 
         // then
