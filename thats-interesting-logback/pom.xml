@@ -6,4 +6,5 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>thats-interesting-logback</artifactId>
+  <name>That's Interesting :: Logback</name>
 </project>
