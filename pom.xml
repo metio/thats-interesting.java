@@ -32,6 +32,7 @@
    <module>thats-interesting-slf4j</module>
    <module>thats-interesting-commons-logging</module>
    <module>thats-interesting-tinylog</module>
+   <module>thats-interesting-syslog</module>
   </modules>
 
   <dependencies>
