@@ -56,7 +56,6 @@ public final class StandardInvocationHandlers {
         return stringFormat(StandardSinks.globalLogger(sink));
     }
 
-    //
     /**
      * @param sink
      *            The output sink to use.

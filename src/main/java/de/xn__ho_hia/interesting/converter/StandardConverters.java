@@ -1,6 +1,5 @@
 package de.xn__ho_hia.interesting.converter;
 
-import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
 import com.github.sebhoss.utils.strings.S;
@@ -43,12 +42,11 @@ public class StandardConverters {
         return (proxy, method, args) -> new Object[] {
                 method.getDeclaringClass().getName(),
                 method.getName(),
-                combineNamesAndValues(method, args)
+                combineNamesAndValues(method.getParameters(), args)
         };
     }
 
-    private static String combineNamesAndValues(final Method method, final Object[] args) {
-        final Parameter[] parameters = method.getParameters();
+    private static String combineNamesAndValues(final Parameter[] parameters, final Object[] args) {
         final String[] namesAndValues = new String[args.length];
         for (int index = 0; index < args.length; index++) {
             namesAndValues[index] = String.format(NAME_VALUE_TEMPLATE, parameters[index].getName(), args[index]);
