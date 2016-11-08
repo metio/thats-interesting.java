@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 public class Log4jSinks {
 
     /**
-     * @return A consumer that uses java.util.logging
+     * @return A consumer that uses Log4j
      */
     public static final Consumer<String> log4j() {
         return log4j(Log4jSinks.class);
@@ -30,7 +30,7 @@ public class Log4jSinks {
     /**
      * @param sink
      *            The sink to use.
-     * @return A consumer that uses java.util.logging
+     * @return A consumer that uses Log4j
      */
     public static final Consumer<String> log4j(final BiConsumer<Logger, String> sink) {
         return log4j(Log4jSinks.class, sink);
@@ -41,7 +41,7 @@ public class Log4jSinks {
      *            The class of the logger which writes into the sink.
      * @param sink
      *            The sink to use.
-     * @return A consumer that uses java.util.logging
+     * @return A consumer that uses Log4j
      */
     public static final Consumer<String> log4j(final Class<?> loggerClass, final BiConsumer<Logger, String> sink) {
         return log4jSink(LogManager.getLogger(loggerClass), sink);
@@ -52,7 +52,7 @@ public class Log4jSinks {
      *            The logger to use.
      * @param sink
      *            The sink to use.
-     * @return A consumer that uses java.util.logging
+     * @return A consumer that uses Log4j
      */
     public static final Consumer<String> log4jSink(final Logger logger, final BiConsumer<Logger, String> sink) {
         return message -> sink.accept(logger, message);

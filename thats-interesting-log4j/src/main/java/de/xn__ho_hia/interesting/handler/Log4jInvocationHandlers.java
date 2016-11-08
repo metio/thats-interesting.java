@@ -73,7 +73,7 @@ public final class Log4jInvocationHandlers {
     /**
      * @param sink
      *            The sink to use.
-     * @return An invocation handler that prints method invocations to java.util.logging
+     * @return An invocation handler that prints method invocations to Log4j
      */
     public static final InvocationHandler log4j(final BiConsumer<Logger, String> sink) {
         return stringFormat(Log4jSinks.log4j(sink));
