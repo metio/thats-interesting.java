@@ -26,13 +26,15 @@
 
   <modules>
    <module>thats-interesting-core</module>
+
+   <!-- logging adapters -->
+   <module>thats-interesting-commons-logging</module>
    <module>thats-interesting-jul</module>
    <module>thats-interesting-logback</module>
    <module>thats-interesting-log4j</module>
    <module>thats-interesting-slf4j</module>
-   <module>thats-interesting-commons-logging</module>
-   <module>thats-interesting-tinylog</module>
    <module>thats-interesting-syslog</module>
+   <module>thats-interesting-tinylog</module>
   </modules>
 
   <dependencies>
