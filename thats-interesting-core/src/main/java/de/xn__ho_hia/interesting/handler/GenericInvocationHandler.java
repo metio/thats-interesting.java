@@ -16,7 +16,13 @@ public class GenericInvocationHandler<OUTPUT> extends NullReturningInvocationHan
     private final MethodInvocationConverter<OUTPUT> converter;
     private final Consumer<OUTPUT>                  sink;
 
-    GenericInvocationHandler(
+    /**
+     * @param converter
+     *            The converter to use.
+     * @param sink
+     *            The sink to use.
+     */
+    public GenericInvocationHandler(
             final MethodInvocationConverter<OUTPUT> converter,
             final Consumer<OUTPUT> sink) {
         this.converter = converter;
