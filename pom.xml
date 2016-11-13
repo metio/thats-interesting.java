@@ -27,9 +27,11 @@
   <modules>
     <module>thats-interesting-core</module>
 
-    <!-- logging adapters -->
+    <!-- sinks -->
     <module>thats-interesting-commons-logging</module>
+    <module>thats-interesting-elasticsearch</module>
     <module>thats-interesting-jul</module>
+    <module>thats-interesting-kafka</module>
     <module>thats-interesting-log4j</module>
     <module>thats-interesting-slf4j</module>
     <module>thats-interesting-syslog</module>
