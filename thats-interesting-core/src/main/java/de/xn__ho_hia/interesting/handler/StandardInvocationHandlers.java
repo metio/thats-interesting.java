@@ -13,7 +13,8 @@ import de.xn__ho_hia.interesting.sink.StandardSinks;
  */
 public final class StandardInvocationHandlers {
 
-    private static final String FORMAT_TEMPLATE = "Class: [%s] Method: [%s] Arguments: %s"; //$NON-NLS-1$
+    /** Default String format template. */
+    public static final String FORMAT_TEMPLATE = "Class: [%s] Method: [%s] Arguments: %s"; //$NON-NLS-1$
 
     /**
      * @param handlers

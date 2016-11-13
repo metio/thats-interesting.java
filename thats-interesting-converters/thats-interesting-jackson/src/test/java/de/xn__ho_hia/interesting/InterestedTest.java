@@ -1,11 +1,13 @@
 package de.xn__ho_hia.interesting;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
-import de.xn__ho_hia.interesting.converter.JacksonConverters;
+import de.xn__ho_hia.interesting.converter.JsonConverter;
 import de.xn__ho_hia.interesting.handler.GenericInvocationHandler;
 
 /**
@@ -22,7 +24,7 @@ public class InterestedTest {
         // given
         final TestInterface instance = new LoggerBuilder<>(TestInterface.class)
                 .invocationHandler(new GenericInvocationHandler<>(
-                        JacksonConverters.json(),
+                        new JsonConverter(new ObjectMapper()),
                         System.out::println))
                 .createLogger();
 
@@ -35,6 +37,8 @@ public class InterestedTest {
         instance.otherMethod(pair);
 
         instance.thirdMethod("test", pair);
+        instance.thirdMethod("test", pair, 5);
+        instance.thirdMethod("test", pair, 18, false);
 
         // then
         Assertions.assertNotNull(instance);
@@ -47,6 +51,10 @@ public class InterestedTest {
         void otherMethod(Pair pair);
 
         void thirdMethod(String someParam, Pair pair);
+
+        void thirdMethod(String someParam, Pair pair, int num);
+
+        void thirdMethod(String someParam, Pair pair, int num, boolean whatever);
 
     }
 

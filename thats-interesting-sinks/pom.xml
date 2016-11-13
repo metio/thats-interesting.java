@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>de.xn--ho-hia.thats-interesting</groupId>
+    <artifactId>thats-interesting.java</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>thats-interesting-sinks</artifactId>
+  <name>That's Interesting :: Sinks</name>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>thats-interesting-commons-logging</module>
+    <module>thats-interesting-elasticsearch</module>
+    <module>thats-interesting-flume</module>
+    <module>thats-interesting-jul</module>
+    <module>thats-interesting-kafka</module>
+    <module>thats-interesting-log4j</module>
+    <module>thats-interesting-slf4j</module>
+    <module>thats-interesting-syslog</module>
+    <module>thats-interesting-tinylog</module>
+  </modules>
+
+</project>

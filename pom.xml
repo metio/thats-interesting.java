@@ -18,7 +18,7 @@
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>That's Interesting</name>
-  <description>Strongly-types logging framework</description>
+  <description>Strongly-typed logging framework</description>
 
   <properties>
     <junit.platform.version>1.0.0-M2</junit.platform.version>
@@ -26,22 +26,8 @@
 
   <modules>
     <module>thats-interesting-core</module>
-
-    <!-- sinks -->
-    <module>thats-interesting-commons-logging</module>
-    <module>thats-interesting-elasticsearch</module>
-    <module>thats-interesting-flume</module>
-    <module>thats-interesting-jul</module>
-    <module>thats-interesting-kafka</module>
-    <module>thats-interesting-log4j</module>
-    <module>thats-interesting-slf4j</module>
-    <module>thats-interesting-syslog</module>
-    <module>thats-interesting-tinylog</module>
-
-    <!-- converters -->
-    <module>thats-interesting-gson</module>
-    <module>thats-interesting-jackson</module>
-    <module>thats-interesting-xstream</module>
+    <module>thats-interesting-converters</module>
+    <module>thats-interesting-sinks</module>
   </modules>
 
   <dependencies>
