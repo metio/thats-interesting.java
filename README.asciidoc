@@ -21,6 +21,8 @@ You use that interface together with the `Interested` class like this to create 
 
 [source, java]
 ----
+import de.xn__ho_hia.interesting.Interested;
+
 YourOwnPOI poi = Interested.in(YourOwnPOI.class);
 ----
 
