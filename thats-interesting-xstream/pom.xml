@@ -10,4 +10,17 @@
   <artifactId>thats-interesting-xstream</artifactId>
   <name>That's Interesting :: XStream</name>
 
+  <dependencies>
+    <dependency>
+      <groupId>de.xn--ho-hia.thats-interesting</groupId>
+      <artifactId>thats-interesting-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.thoughtworks.xstream</groupId>
+      <artifactId>xstream</artifactId>
+      <version>1.4.9</version>
+    </dependency>
+  </dependencies>
+
 </project>
