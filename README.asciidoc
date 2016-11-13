@@ -1,16 +1,36 @@
-Users define interface
-methods represent "points of interest"
-method parameters are key/values
-requires java8 with -paranames compiler option
-methods can optionally return (one of multiple predefined) type that allows to add custom message
-otherwise no message is supposed to be given (no strings!)
-log-levels/redirects/filtering based on interfaces (maybe methods later?)
-json output for elasticsearch (timestamps are important)
-xml output?
-binary output?
-static class called "Interested" to write log messages on the fly (w/ builder pattern)
- - Interested.in(INTERFACE.class) /* returns INTERFACE instance */.userDefinedMethod(param, param);
- - Interested.with(additionalSettings..).in(INTERFACE.class).userDefinedMethod(param, param);
+= That's Interesting
 
-name:
-- thats-interesting (TI)
+*That's interesting* is a strongly typed logging framework targeting applications that want to aggregate their log messages into a single system, such as the ever famous ELK stack.
+
+== Usage
+
+The framework works by defining logger interfaces (called "point of interest") such as: 
+
+[source, java]
+----
+package your.own.package
+
+public interface YourOwnPOI {
+
+    void somethingInteresting(YourPOJO pojo);
+
+}
+----
+
+You use that interface together with the `Interested` class like this to create an instance at runtime:
+
+[source, java]
+----
+YourOwnPOI poi = Interested.in(YourOwnPOI.class);
+----
+
+Finally, use the created instance at runtime to log something that is of interest to your application:
+
+[source, java]
+----
+poi.somethingInteresting(pojo);
+----
+
+== Tips & Tricks
+
+Configuring your points of interest outside of the classes that are using those has the advantage that none of the using classes have a compile time dependency on any classes in this library.
