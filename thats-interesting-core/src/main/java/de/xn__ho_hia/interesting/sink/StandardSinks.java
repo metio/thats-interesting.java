@@ -14,4 +14,11 @@ public class StandardSinks {
         return System.out::println;
     }
 
+    /**
+     * @return A consumer that uses System.err
+     */
+    public static final Consumer<String> systemError() {
+        return System.err::println;
+    }
+
 }
