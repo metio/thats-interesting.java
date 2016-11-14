@@ -33,6 +33,85 @@ Finally, use the created instance at runtime to log something that is of interes
 poi.somethingInteresting(pojo);
 ----
 
+With its current default settings the above call will result in something like this on `System.out`:
+
+[source]
+----
+Class: [your.own.package.YourOwnPOI] Method: [somethingInteresting] Arguments: [pojo: {field1: value1, field2: value2}]
+----
+
+You probably don't want to write to `System.out` but log into a file on your filesystem like this:
+
+[source]
+----
+import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.logFile;
+import de.xn__ho_hia.interesting.LoggerBuilder;
+
+YourOwnPOI poi = new LoggerBuilder<>(YourOwnPOI.class)
+                .invocationHandler(logFile("target/file.log"))
+                .createLogger();
+----
+
+However that is still no fun since you probably want to aggregate all your logs from all your applications in a central place like an Elasticsearch cluster or your next best Kafka broker. Users of the ELK stack can ignore Logstash and push directly into ES like this:
+
+[source, java]
+----
+import static de.xn__ho_hia.interesting.handler.ElasticsearchInvocationHandlers.elasticsearch;
+import de.xn__ho_hia.interesting.LoggerBuilder;
+
+YourOwnPOI poi = new LoggerBuilder<>(YourOwnPOI.class)
+                .invocationHandler(elasticsearch("localhost:9300"))
+                .createLogger();
+----
+
+The above configuration sends objects similar to the following JSON:
+
+[source, json]
+----
+{
+  "class": "your.own.package.YourOwnPOI",
+  "method": "somethingInteresting",
+  "arguments": {
+    "pojo": {
+      "field1": "value1",
+      "field2": "value2"
+    }
+  }
+}
+----
+
+If you want to add additional key-value pairs, do the following:
+
+[source, java]
+----
+import static de.xn__ho_hia.interesting.handler.ElasticsearchInvocationHandlers.elasticsearch;
+import de.xn__ho_hia.interesting.LoggerBuilder;
+
+YourOwnPOI poi = new LoggerBuilder<>(YourOwnPOI.class)
+                .invocationHandler(elasticsearch("localhost:9300"))
+                .withStaticExtra("application", "yourCoolApp")
+                .withStaticExtra("hostname", "my.custom.domain.tld")
+                .createLogger();
+----
+
+Which then produces:
+
+[source, json]
+----
+{
+  "class": "your.own.package.YourOwnPOI",
+  "method": "somethingInteresting",
+  "arguments": {
+    "pojo": {
+      "field1": "value1",
+      "field2": "value2"
+    }
+  },
+  "application": "yourCoolApp",
+  "hostname": "my.custom.domain.tld"
+}
+----
+
 == Tips & Tricks
 
 Configuring your points of interest outside of the classes that are using those has the advantage that none of the using classes have a compile time dependency on any classes in this library.
