@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("static-method")
 public class InterestedTest {
 
+    @SuppressWarnings("nls")
     @Test
     void shouldCreateNonNullProxyForInterface() {
         // given
@@ -20,7 +21,8 @@ public class InterestedTest {
 
         // when
         instance = Interested.in(TestInterface.class);
-        instance.someMethod("test"); //$NON-NLS-1$
+        instance.someMethod("hello");
+        instance.someMethod("world", new TestModel("one", "two"));
 
         // then
         Assertions.assertNotNull(instance);
@@ -29,6 +31,25 @@ public class InterestedTest {
     static interface TestInterface {
 
         void someMethod(String someParam);
+
+        void someMethod(String someParam, TestModel model);
+
+    }
+
+    static class TestModel {
+
+        public final String left;
+        public final String right;
+
+        public TestModel(final String left, final String right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("{left: %s, right: %s}", left, right); //$NON-NLS-1$
+        }
 
     }
 
