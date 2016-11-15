@@ -90,7 +90,7 @@ import de.xn__ho_hia.interesting.LoggerBuilder;
 YourOwnPOI poi = new LoggerBuilder<>(YourOwnPOI.class)
                 .invocationHandler(elasticsearch("localhost:9300"))
                 .withStaticExtra("application", "yourCoolApp")
-                .withStaticExtra("hostname", "my.custom.domain.tld")
+                .withStaticExtra("hostname", "your.custom.domain.tld")
                 .createLogger();
 ----
 
@@ -108,7 +108,7 @@ Which then produces:
     }
   },
   "application": "yourCoolApp",
-  "hostname": "my.custom.domain.tld"
+  "hostname": "your.custom.domain.tld"
 }
 ----
 
