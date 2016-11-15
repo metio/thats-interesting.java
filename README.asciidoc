@@ -88,9 +88,10 @@ import static de.xn__ho_hia.interesting.handler.ElasticsearchInvocationHandlers.
 import de.xn__ho_hia.interesting.LoggerBuilder;
 
 YourOwnPOI poi = new LoggerBuilder<>(YourOwnPOI.class)
-                .invocationHandler(elasticsearch("localhost:9300"))
+                .invocationHandler(elasticsearch("localhost:9300", "indexName"))
                 .withStaticExtra("application", "yourCoolApp")
                 .withStaticExtra("hostname", "your.custom.domain.tld")
+                .withSuppliedExtra("timestamp", () -> LocalDateTime.now().toString())
                 .createLogger();
 ----
 
@@ -108,7 +109,8 @@ Which then produces:
     }
   },
   "application": "yourCoolApp",
-  "hostname": "your.custom.domain.tld"
+  "hostname": "your.custom.domain.tld",
+  "timestamp": "your-local-date-time"
 }
 ----
 
