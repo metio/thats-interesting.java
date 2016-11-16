@@ -2,6 +2,7 @@ package de.xn__ho_hia.interesting;
 
 import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.delegate;
 import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.logFile;
+import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.systemOut;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Interested {
     public static final <LOGGER> LOGGER in(final Class<LOGGER> logger) {
         return new LoggerBuilder<>(logger)
                 .invocationHandler(delegate(
+                        systemOut(),
                         logFile("target/file.log"),
                         logFile("target/another.log")))
                 .createLogger();

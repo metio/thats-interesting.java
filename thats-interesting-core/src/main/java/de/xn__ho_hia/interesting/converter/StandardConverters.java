@@ -11,28 +11,37 @@ import de.xn__ho_hia.interesting.handler.StandardInvocationHandlers;
  */
 public class StandardConverters {
 
-    private static final String NAME_VALUE_TEMPLATE = "%s: %s"; //$NON-NLS-1$
+    /** The default name/value template for String based converters. */
+    public static final String NAME_VALUE_TEMPLATE = "%s: %s"; //$NON-NLS-1$
 
     /**
-     * @param format
-     *            The string format to use.
+     * Formats incoming messages according to the given format template. Exposes the following three parameters to
+     * templates:
+     * <ul>
+     * <li>Fully qualified class name of the POI.</li>
+     * <li>Name of the calling method.</li>
+     * <li>List of name/value pairs.</li>
+     * </ul>
+     *
+     * @param template
+     *            The format template to use.
      * @return The configured method invocation converter.
      */
-    public static final MethodInvocationConverter<String> string(final String format) {
-        return new StringFormatConverter(format, argumentsConverter());
+    public static final MethodInvocationConverter<String> string(final String template) {
+        return new StringFormatConverter(template, argumentsConverter());
     }
 
     /**
-     * @param format
-     *            The string format to use.
+     * @param template
+     *            The format template to use.
      * @param argumentConverter
      *            The argument converter to use.
      * @return The configured method invocation converter.
      */
     public static final MethodInvocationConverter<String> string(
-            final String format,
+            final String template,
             final MethodInvocationConverter<Object[]> argumentConverter) {
-        return new StringFormatConverter(format, argumentConverter);
+        return new StringFormatConverter(template, argumentConverter);
     }
 
     /**

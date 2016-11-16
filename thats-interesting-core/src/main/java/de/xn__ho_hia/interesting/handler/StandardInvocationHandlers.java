@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.function.Consumer;
 
 import de.xn__ho_hia.interesting.converter.MethodInvocationConverter;
+import de.xn__ho_hia.interesting.converter.StandardConverters;
 import de.xn__ho_hia.interesting.sink.StandardSinks;
 
 /**
@@ -52,13 +53,12 @@ public final class StandardInvocationHandlers {
     }
 
     /**
-     * TODO: document possible template placeholders
-     *
      * @param template
      *            The format template to use.
      * @param sink
      *            The output sink to use.
      * @return An invocation handler that writes method invocations into the given sink.
+     * @see StandardConverters#string(String) for a list of available template parameters.
      */
     public static final InvocationHandler stringFormat(final String template, final Consumer<String> sink) {
         return generic(string(template), sink);

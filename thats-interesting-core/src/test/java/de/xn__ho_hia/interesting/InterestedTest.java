@@ -17,10 +17,9 @@ public class InterestedTest {
     @Test
     void shouldCreateNonNullProxyForInterface() {
         // given
-        TestInterface instance;
+        final TestInterface instance = Interested.in(TestInterface.class);
 
         // when
-        instance = Interested.in(TestInterface.class);
         instance.someMethod("hello");
         instance.someMethod("world", new TestModel("one", "two"));
 
@@ -38,8 +37,8 @@ public class InterestedTest {
 
     static class TestModel {
 
-        public final String left;
-        public final String right;
+        private final String left;
+        private final String right;
 
         public TestModel(final String left, final String right) {
             this.left = left;
