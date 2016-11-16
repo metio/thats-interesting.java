@@ -88,9 +88,9 @@ public final class StandardInvocationHandlers {
      * @return An invocation handler that converts method invocations with the given converter and writes the result
      *         into the given sink.
      */
-    public static final <TOPIC> InvocationHandler generic(
-            final MethodInvocationConverter<TOPIC> converter,
-            final Consumer<TOPIC> sink) {
+    public static final <OUTPUT> InvocationHandler generic(
+            final MethodInvocationConverter<OUTPUT> converter,
+            final Consumer<OUTPUT> sink) {
         return new GenericInvocationHandler<>(converter, sink);
     }
 
