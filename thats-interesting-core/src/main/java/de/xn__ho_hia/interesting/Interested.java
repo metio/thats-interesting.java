@@ -18,9 +18,7 @@ public class Interested {
     public static final <LOGGER> LOGGER in(final Class<LOGGER> logger) {
         return new LoggerBuilder<>(logger)
                 .invocationHandler(delegate(
-                        logFile("target/triple.log"),
-                        logFile("target/triple.log"),
-                        logFile("target/triple.log"),
+                        logFile("target/file.log"),
                         logFile("target/another.log")))
                 .createLogger();
     }

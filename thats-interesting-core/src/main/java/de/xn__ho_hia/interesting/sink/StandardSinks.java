@@ -5,8 +5,10 @@ import static java.nio.file.StandardOpenOption.APPEND;
 import static java.nio.file.StandardOpenOption.CREATE;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
@@ -34,17 +36,31 @@ public class StandardSinks {
      * @return A consumer that writes into a log file.
      */
     public static final Consumer<String> fileAppender(final Path logFile) {
-        return appender(logFile);
+        return fileAppender(logFile, UTF_8);
     }
 
-    private static Consumer<String> appender(final Path logFile) {
+    /**
+     * @param logFile
+     *            The file to write into.
+     * @param charset
+     *            The charset to use.
+     * @return A consumer that writes into a log file.
+     */
+    public static final Consumer<String> fileAppender(final Path logFile, final Charset charset) {
+        return appender(logFile, charset);
+    }
+
+    @SuppressWarnings("nls")
+    private static Consumer<String> appender(final Path logFile, final Charset charset) {
+        Objects.requireNonNull(logFile, "The given log file is NULL.");
+        Objects.requireNonNull(charset, "The given charset is NULL.");
+
         return message -> {
             try {
-                @SuppressWarnings("nls")
                 final String output = message.endsWith("\n") ? message : message + "\n";
-                Files.write(logFile, output.getBytes(UTF_8), CREATE, APPEND);
+                Files.write(logFile, output.getBytes(charset), CREATE, APPEND);
             } catch (final IOException exception) {
-                throw new RuntimeException(exception);
+                throw new CannotAppendFileException(exception);
             }
         };
     }
