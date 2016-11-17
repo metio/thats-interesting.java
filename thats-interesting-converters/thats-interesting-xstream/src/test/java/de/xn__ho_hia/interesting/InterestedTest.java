@@ -19,8 +19,8 @@ import de.xn__ho_hia.interesting.handler.GenericInvocationHandler;
 @SuppressWarnings("static-method")
 public class InterestedTest {
 
-    @SuppressWarnings("nls")
     @Test
+    @SuppressWarnings({ "nls", "null" })
     void shouldCreateNonNullProxyForInterface() {
         // given
         final TestInterface instance = new LoggerBuilder<>(TestInterface.class)
@@ -67,6 +67,7 @@ public class InterestedTest {
 
     }
 
+    @SuppressWarnings("null")
     static class Pair {
 
         public String left;

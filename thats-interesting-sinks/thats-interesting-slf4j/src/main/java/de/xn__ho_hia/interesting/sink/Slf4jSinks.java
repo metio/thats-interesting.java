@@ -43,6 +43,7 @@ public class Slf4jSinks {
      *            The sink to use.
      * @return A consumer that uses Slf4j
      */
+    @SuppressWarnings("null")
     public static final Consumer<String> slf4j(final Class<?> loggerClass, final BiConsumer<Logger, String> sink) {
         return slf4jSink(LoggerFactory.getLogger(loggerClass), sink);
     }

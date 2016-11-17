@@ -21,6 +21,7 @@ public class JULSinks {
      *            The sink to use.
      * @return A consumer that uses java.util.logging
      */
+    @SuppressWarnings("null")
     public static final Consumer<String> globalLogger(final BiConsumer<Logger, String> sink) {
         return logger(Logger.getGlobal(), sink);
     }

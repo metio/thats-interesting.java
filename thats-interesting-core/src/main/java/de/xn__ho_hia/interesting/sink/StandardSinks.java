@@ -35,6 +35,7 @@ public class StandardSinks {
      *            The file to write into.
      * @return A consumer that writes into a log file.
      */
+    @SuppressWarnings("null")
     public static final Consumer<String> fileAppender(final Path logFile) {
         return fileAppender(logFile, UTF_8);
     }

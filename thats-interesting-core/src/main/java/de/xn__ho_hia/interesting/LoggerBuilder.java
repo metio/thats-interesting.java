@@ -3,6 +3,8 @@ package de.xn__ho_hia.interesting;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
+import de.xn__ho_hia.interesting.handler.NoOpInvocationHandler;
+
 /**
  * @param <LOGGER>
  *            The logger interface to proxy.
@@ -11,7 +13,7 @@ public final class LoggerBuilder<LOGGER> {
 
     private final Class<LOGGER> logger;
 
-    private InvocationHandler   handler;
+    private InvocationHandler   handler = new NoOpInvocationHandler();
 
     /**
      * @param logger

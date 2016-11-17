@@ -24,6 +24,21 @@ public class JsonConverter implements MethodInvocationConverter<String> {
 
     @Override
     public String convert(final Object proxy, final Method method, final Object[] args) {
+        final ObjectNode objectNode = createOutputModel(method, args);
+        return convertToString(objectNode);
+    }
+
+    @SuppressWarnings("null")
+    private String convertToString(final ObjectNode objectNode) {
+        try {
+            return objectMapper.writeValueAsString(objectNode);
+        } catch (final JsonProcessingException exception) {
+            throw new IllegalStateException(exception);
+        }
+    }
+
+    @SuppressWarnings("null")
+    private ObjectNode createOutputModel(final Method method, final Object[] args) {
         final Parameter[] parameters = method.getParameters();
         final ObjectNode objectNode = objectMapper.createObjectNode();
 
@@ -31,11 +46,7 @@ public class JsonConverter implements MethodInvocationConverter<String> {
             objectNode.putPOJO(parameters[index].getName(), args[index]);
         }
 
-        try {
-            return objectMapper.writeValueAsString(objectNode);
-        } catch (final JsonProcessingException exception) {
-            throw new IllegalStateException(exception);
-        }
+        return objectNode;
     }
 
 }

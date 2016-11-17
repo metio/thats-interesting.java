@@ -46,6 +46,7 @@ public class InterestedTest {
         }
 
         @Override
+        @SuppressWarnings("null")
         public String toString() {
             return String.format("{left: %s, right: %s}", left, right); //$NON-NLS-1$
         }

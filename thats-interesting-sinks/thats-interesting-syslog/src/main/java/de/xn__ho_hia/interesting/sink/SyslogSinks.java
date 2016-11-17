@@ -302,6 +302,7 @@ public class SyslogSinks {
      *            The sink to use.
      * @return A consumer that uses syslog
      */
+    @SuppressWarnings("null")
     public static final Consumer<String> syslog(final String protocol, final BiConsumer<SyslogIF, String> sink) {
         return msg -> sink.accept(Syslog.getInstance(protocol), msg);
     }

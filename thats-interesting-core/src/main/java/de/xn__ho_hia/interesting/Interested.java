@@ -4,6 +4,8 @@ import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.deleg
 import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.logFile;
 import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.systemOut;
 
+import java.nio.file.Paths;
+
 /**
  *
  *
@@ -15,13 +17,13 @@ public class Interested {
      *            The logger interface to proxy.
      * @return A logger builder for the given interface.
      */
-    @SuppressWarnings("nls")
+    @SuppressWarnings({ "nls", "null" })
     public static final <LOGGER> LOGGER in(final Class<LOGGER> logger) {
         return new LoggerBuilder<>(logger)
                 .invocationHandler(delegate(
                         systemOut(),
-                        logFile("target/file.log"),
-                        logFile("target/another.log")))
+                        logFile(Paths.get("target/file.log")),
+                        logFile(Paths.get("target/another.log"))))
                 .createLogger();
     }
 

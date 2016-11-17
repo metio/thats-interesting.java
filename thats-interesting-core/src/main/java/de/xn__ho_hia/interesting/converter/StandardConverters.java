@@ -47,6 +47,7 @@ public class StandardConverters {
     /**
      * Converter that matches {@link StandardInvocationHandlers#FORMAT_TEMPLATE}
      */
+    @SuppressWarnings("null")
     private static MethodInvocationConverter<Object[]> argumentsConverter() {
         return (proxy, method, args) -> new Object[] {
                 method.getDeclaringClass().getName(),
@@ -55,6 +56,7 @@ public class StandardConverters {
         };
     }
 
+    @SuppressWarnings("null")
     private static String combineNamesAndValues(final Parameter[] parameters, final Object[] args) {
         final String[] namesAndValues = new String[args.length];
         for (int index = 0; index < args.length; index++) {

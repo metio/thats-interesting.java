@@ -43,6 +43,7 @@ public class Log4jSinks {
      *            The sink to use.
      * @return A consumer that uses Log4j
      */
+    @SuppressWarnings("null")
     public static final Consumer<String> log4j(final Class<?> loggerClass, final BiConsumer<Logger, String> sink) {
         return log4jSink(LogManager.getLogger(loggerClass), sink);
     }

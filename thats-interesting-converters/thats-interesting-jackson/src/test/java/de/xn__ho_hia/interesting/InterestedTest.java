@@ -58,6 +58,7 @@ public class InterestedTest {
 
     }
 
+    @SuppressWarnings("null")
     static class Pair {
 
         public String left;

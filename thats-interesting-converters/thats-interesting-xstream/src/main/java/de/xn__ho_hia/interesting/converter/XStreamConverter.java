@@ -25,6 +25,7 @@ public class XStreamConverter implements MethodInvocationConverter<String> {
     }
 
     @Override
+    @SuppressWarnings("null")
     public String convert(final Object proxy, final Method method, final Object[] args) {
         final Parameter[] parameters = method.getParameters();
 

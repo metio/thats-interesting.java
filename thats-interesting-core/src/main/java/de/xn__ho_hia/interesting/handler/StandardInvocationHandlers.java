@@ -3,7 +3,7 @@ package de.xn__ho_hia.interesting.handler;
 import static de.xn__ho_hia.interesting.converter.StandardConverters.string;
 
 import java.lang.reflect.InvocationHandler;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.function.Consumer;
 
 import de.xn__ho_hia.interesting.converter.MethodInvocationConverter;
@@ -29,11 +29,11 @@ public final class StandardInvocationHandlers {
 
     /**
      * @param pathToFile
-     *            The absolute or relative path to the target log file.
+     *            The path to the target log file.
      * @return An invocation handler that prints method invocations to a log file.
      */
-    public static final InvocationHandler logFile(final String pathToFile) {
-        return stringFormat(StandardSinks.fileAppender(Paths.get(pathToFile)));
+    public static final InvocationHandler logFile(final Path pathToFile) {
+        return stringFormat(StandardSinks.fileAppender(pathToFile));
     }
 
     /**

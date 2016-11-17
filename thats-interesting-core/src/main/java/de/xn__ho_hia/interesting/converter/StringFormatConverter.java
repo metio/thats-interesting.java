@@ -24,6 +24,7 @@ public class StringFormatConverter implements MethodInvocationConverter<String> 
     }
 
     @Override
+    @SuppressWarnings("null")
     public String convert(final Object proxy, final Method method, final Object[] args) {
         return String.format(format, formatArguments.convert(proxy, method, args));
     }
