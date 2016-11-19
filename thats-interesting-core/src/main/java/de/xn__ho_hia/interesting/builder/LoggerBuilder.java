@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import de.xn__ho_hia.interesting.converter.InvocationConverter;
+import de.xn__ho_hia.interesting.filter.DelegatingInvocationFilter;
 import de.xn__ho_hia.interesting.filter.InvocationFilter;
 import de.xn__ho_hia.interesting.handler.DelegatingInvocationHandler;
 import de.xn__ho_hia.interesting.handler.GenericInvocationHandler;
@@ -108,7 +109,8 @@ public final class LoggerBuilder<LOGGER> {
          * @return A newly created logger builder using the given sinks.
          */
         public LoggerBuilder<LOGGER> sinks(final Consumer<String> sink) {
-            return loggerBuilder.invocationHandler(new GenericInvocationHandler<>(filters, converter, sink));
+            return loggerBuilder.invocationHandler(
+                    new GenericInvocationHandler<>(new DelegatingInvocationFilter(filters), converter, sink));
         }
 
     }

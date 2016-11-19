@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 
 import de.xn__ho_hia.interesting.converter.InvocationConverter;
 import de.xn__ho_hia.interesting.converter.StandardConverters;
+import de.xn__ho_hia.interesting.filter.DelegatingInvocationFilter;
 import de.xn__ho_hia.interesting.sink.StandardSinks;
 
 /**
@@ -90,7 +91,7 @@ public final class StandardInvocationHandlers {
     public static final <OUTPUT> InvocationHandler generic(
             final InvocationConverter<OUTPUT> converter,
             final Consumer<OUTPUT> sink) {
-        return new GenericInvocationHandler<>(new ArrayList<>(), converter, sink);
+        return new GenericInvocationHandler<>(new DelegatingInvocationFilter(new ArrayList<>()), converter, sink);
     }
 
 }
