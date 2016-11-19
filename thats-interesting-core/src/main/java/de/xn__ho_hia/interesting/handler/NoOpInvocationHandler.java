@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 /**
  * Invocation handler that does nothing.
  */
-public final class NoOpInvocationHandler extends NullReturningInvocationHandler {
+public final class NoOpInvocationHandler extends AbstractNullReturningInvocationHandler {
 
     @Override
     protected void invokeHandler(final Object proxy, final Method method, final Object[] args) throws Throwable {

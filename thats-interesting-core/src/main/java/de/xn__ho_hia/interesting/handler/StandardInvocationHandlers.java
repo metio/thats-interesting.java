@@ -1,9 +1,8 @@
 package de.xn__ho_hia.interesting.handler;
 
-import static de.xn__ho_hia.interesting.converter.StandardConverters.string;
-
 import java.lang.reflect.InvocationHandler;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.function.Consumer;
 
 import de.xn__ho_hia.interesting.converter.MethodInvocationConverter;
@@ -58,10 +57,10 @@ public final class StandardInvocationHandlers {
      * @param sink
      *            The output sink to use.
      * @return An invocation handler that writes method invocations into the given sink.
-     * @see StandardConverters#string(String) for a list of available template parameters.
+     * @see StandardConverters#stringFormat(String) for a list of available template parameters.
      */
     public static final InvocationHandler stringFormat(final String template, final Consumer<String> sink) {
-        return generic(string(template), sink);
+        return generic(StandardConverters.stringFormat(template), sink);
     }
 
     /**
@@ -77,7 +76,7 @@ public final class StandardInvocationHandlers {
             final String template,
             final MethodInvocationConverter<Object[]> argumentConverter,
             final Consumer<String> sink) {
-        return generic(string(template, argumentConverter), sink);
+        return generic(StandardConverters.stringFormat(template, argumentConverter), sink);
     }
 
     /**
@@ -91,7 +90,7 @@ public final class StandardInvocationHandlers {
     public static final <OUTPUT> InvocationHandler generic(
             final MethodInvocationConverter<OUTPUT> converter,
             final Consumer<OUTPUT> sink) {
-        return new GenericInvocationHandler<>(converter, sink);
+        return new GenericInvocationHandler<>(new ArrayList<>(), converter, sink);
     }
 
 }

@@ -1,5 +1,9 @@
 package de.xn__ho_hia.interesting;
 
+import static de.xn__ho_hia.interesting.converter.StandardConverters.stringFormat;
+import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.FORMAT_TEMPLATE;
+import static de.xn__ho_hia.interesting.sink.StandardSinks.systemOut;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,24 +13,25 @@ import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
 import de.xn__ho_hia.interesting.converter.XStreamConverters;
-import de.xn__ho_hia.interesting.handler.GenericInvocationHandler;
 
 /**
  *
  *
  */
 @RunWith(JUnitPlatform.class)
-@SuppressWarnings("static-method")
 public class InterestedTest {
 
     @Test
-    @SuppressWarnings({ "nls", "null" })
+    @SuppressWarnings({ "nls", "null", "static-method" })
     void shouldCreateNonNullProxyForInterface() {
         // given
-        final TestInterface instance = new LoggerBuilder<>(TestInterface.class)
-                .invocationHandler(new GenericInvocationHandler<>(
-                        XStreamConverters.xml(),
-                        System.out::println))
+        final TestInterface instance = Interested.in(TestInterface.class)
+                .buildHandler()
+                .converter(XStreamConverters.xml())
+                .sinks(systemOut().andThen(systemOut()))
+                .buildHandler()
+                .converter(stringFormat(FORMAT_TEMPLATE))
+                .sinks(systemOut().andThen(systemOut()))
                 .createLogger();
 
         // when

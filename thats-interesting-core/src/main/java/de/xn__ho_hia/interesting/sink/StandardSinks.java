@@ -47,12 +47,8 @@ public class StandardSinks {
      *            The charset to use.
      * @return A consumer that writes into a log file.
      */
-    public static final Consumer<String> fileAppender(final Path logFile, final Charset charset) {
-        return appender(logFile, charset);
-    }
-
     @SuppressWarnings("nls")
-    private static Consumer<String> appender(final Path logFile, final Charset charset) {
+    public static final Consumer<String> fileAppender(final Path logFile, final Charset charset) {
         Objects.requireNonNull(logFile, "The given log file is NULL.");
         Objects.requireNonNull(charset, "The given charset is NULL.");
 

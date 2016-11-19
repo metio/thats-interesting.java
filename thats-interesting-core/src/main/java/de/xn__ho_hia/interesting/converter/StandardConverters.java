@@ -27,7 +27,7 @@ public class StandardConverters {
      *            The format template to use.
      * @return The configured method invocation converter.
      */
-    public static final MethodInvocationConverter<String> string(final String template) {
+    public static final MethodInvocationConverter<String> stringFormat(final String template) {
         return new StringFormatConverter(template, argumentsConverter());
     }
 
@@ -38,7 +38,7 @@ public class StandardConverters {
      *            The argument converter to use.
      * @return The configured method invocation converter.
      */
-    public static final MethodInvocationConverter<String> string(
+    public static final MethodInvocationConverter<String> stringFormat(
             final String template,
             final MethodInvocationConverter<Object[]> argumentConverter) {
         return new StringFormatConverter(template, argumentConverter);

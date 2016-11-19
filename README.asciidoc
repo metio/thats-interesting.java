@@ -21,9 +21,13 @@ You use that interface together with the `Interested` class like this to create 
 
 [source, java]
 ----
+import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.systemOut;
+
 import de.xn__ho_hia.interesting.Interested;
 
-YourOwnPOI poi = Interested.in(YourOwnPOI.class);
+YourOwnPOI poi = Interested.in(YourOwnPOI.class)
+                .invocationHandler(systemOut())
+                .createLogger();
 ----
 
 Finally, use the created instance at runtime to log something that is of interest to your application:

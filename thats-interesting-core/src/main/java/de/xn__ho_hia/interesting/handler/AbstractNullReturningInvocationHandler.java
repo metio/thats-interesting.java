@@ -5,12 +5,12 @@ import java.lang.reflect.Method;
 
 import org.eclipse.jdt.annotation.Nullable;
 
-abstract class NullReturningInvocationHandler implements InvocationHandler {
+abstract class AbstractNullReturningInvocationHandler implements InvocationHandler {
 
     @Override
     @SuppressWarnings("null")
     public final Object invoke(final @Nullable Object proxy, final @Nullable Method method,
-            final Object[] args) throws Throwable {
+            final Object @Nullable [] args) throws Throwable {
         invokeHandler(proxy, method, args);
         return null;
     }
