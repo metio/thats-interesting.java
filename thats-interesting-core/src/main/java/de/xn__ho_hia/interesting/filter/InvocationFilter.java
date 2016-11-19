@@ -15,6 +15,4 @@ public interface InvocationFilter {
      */
     boolean accept(Object proxy, Method method, Object[] args);
 
-    // TODO: Define methods
-
 }

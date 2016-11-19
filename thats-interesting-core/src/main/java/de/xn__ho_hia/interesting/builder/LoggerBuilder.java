@@ -3,6 +3,7 @@ package de.xn__ho_hia.interesting.builder;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -65,10 +66,10 @@ public final class LoggerBuilder<LOGGER> {
      */
     public static final class InvocationHandlerBuilder<LOGGER> {
 
-        private final LoggerBuilder<LOGGER>       loggerBuilder;
+        private final LoggerBuilder<LOGGER>  loggerBuilder;
 
-        private final List<InvocationFilter>      filters = new ArrayList<>();
-        private InvocationConverter<String> converter;
+        private final List<InvocationFilter> filters = new ArrayList<>();
+        private InvocationConverter<String>  converter;
 
         /**
          * @param loggerBuilder
@@ -84,8 +85,9 @@ public final class LoggerBuilder<LOGGER> {
          *            The filters to add.
          * @return The current builder reconfigured with the additional filters.
          */
-        public InvocationHandlerBuilder<LOGGER> filters(final List<InvocationFilter> newFilters) {
-            this.filters.addAll(newFilters);
+        @SuppressWarnings("null")
+        public InvocationHandlerBuilder<LOGGER> filters(final InvocationFilter... newFilters) {
+            this.filters.addAll(Arrays.asList(newFilters));
             return this;
         }
 
