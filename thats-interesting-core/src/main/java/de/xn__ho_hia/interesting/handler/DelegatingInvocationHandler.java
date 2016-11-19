@@ -21,7 +21,7 @@ public class DelegatingInvocationHandler extends AbstractNullReturningInvocation
      */
     @SuppressWarnings("null")
     public DelegatingInvocationHandler(final List<InvocationHandler> handlers) {
-        this.handlers = handlers.toArray(new InvocationHandler[handlers.size()]);
+        this(handlers.toArray(new InvocationHandler[handlers.size()]));
     }
 
     @Override
