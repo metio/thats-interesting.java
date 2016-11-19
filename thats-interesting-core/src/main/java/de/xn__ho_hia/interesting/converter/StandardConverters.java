@@ -9,7 +9,7 @@ import de.xn__ho_hia.interesting.handler.StandardInvocationHandlers;
 /**
  * Factory for standard converters.
  */
-public class StandardConverters {
+public final class StandardConverters {
 
     /** The default name/value template for String based converters. */
     public static final String NAME_VALUE_TEMPLATE = "%s: %s"; //$NON-NLS-1$

@@ -12,7 +12,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
  *
  *
  */
-public class MethodInvocationModelConverter implements Converter {
+public final class MethodInvocationModelConverter implements Converter {
 
     @Override
     @SuppressWarnings("rawtypes")

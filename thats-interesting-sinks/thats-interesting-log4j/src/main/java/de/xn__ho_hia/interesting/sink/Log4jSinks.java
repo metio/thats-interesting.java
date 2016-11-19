@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * Factory for Log4j sinks.
  */
-public class Log4jSinks {
+public final class Log4jSinks {
 
     /**
      * @return A consumer that uses Log4j

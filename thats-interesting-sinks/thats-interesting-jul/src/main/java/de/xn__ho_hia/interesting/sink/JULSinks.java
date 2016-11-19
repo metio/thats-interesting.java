@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 /**
  * Factory for java.util.logging based sinks.
  */
-public class JULSinks {
+public final class JULSinks {
 
     /**
      * @return A consumer that uses java.util.logging

@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Filter that delegates to other filters.
  */
-public class DelegatingInvocationFilter implements InvocationFilter {
+public final class DelegatingInvocationFilter implements InvocationFilter {
 
     private final List<InvocationFilter> filters;
 

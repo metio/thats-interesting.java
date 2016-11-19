@@ -5,9 +5,9 @@ import java.lang.reflect.Method;
 /**
  * A converter that formats a method invocation according to a string format template.
  */
-public class StringFormatConverter implements InvocationConverter<String> {
+public final class StringFormatConverter implements InvocationConverter<String> {
 
-    private final String                              format;
+    private final String                        format;
     private final InvocationConverter<Object[]> formatArguments;
 
     /**

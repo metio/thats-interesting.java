@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Delegating invocation handler that calls all given handlers in order they were given.
  */
-public class DelegatingInvocationHandler extends AbstractNullReturningInvocationHandler {
+public final class DelegatingInvocationHandler extends AbstractNullReturningInvocationHandler {
 
     private final InvocationHandler[] handlers;
 

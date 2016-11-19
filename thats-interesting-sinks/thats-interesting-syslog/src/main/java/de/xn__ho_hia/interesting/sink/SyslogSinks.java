@@ -9,7 +9,7 @@ import org.graylog2.syslog4j.SyslogIF;
 /**
  * Factory for syslog based sinks. "unix_syslog", "unix_socket"
  */
-public class SyslogSinks {
+public final class SyslogSinks {
 
     /** Constant for the UDP based protocol name used by syslog. */
     public static final String                        UDP_PROTOCOL         = "udp";                                     //$NON-NLS-1$

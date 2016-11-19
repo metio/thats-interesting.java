@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 /**
  * Factory for standard sinks.
  */
-public class StandardSinks {
+public final class StandardSinks {
 
     /**
      * @return A consumer that uses System.out

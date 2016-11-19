@@ -6,7 +6,7 @@ import java.util.Map;
  *
  *
  */
-public class MethodInvocationModel {
+public final class MethodInvocationModel {
 
     private final Map<String, Object> parameterNamesAndValues;
 

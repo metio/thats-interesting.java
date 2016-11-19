@@ -12,7 +12,7 @@ import de.xn__ho_hia.interesting.converter.internal.MethodInvocationModel;
 /**
  * A converter that formats a method invocation using a XStream.
  */
-public class XStreamConverter implements InvocationConverter<String> {
+public final class XStreamConverter implements InvocationConverter<String> {
 
     private final XStream xstream;
 

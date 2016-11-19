@@ -15,7 +15,7 @@ public final class TinylogInvocationHandlers {
     /**
      * @return An invocation handler that prints method invocations to tinylog
      */
-    public static final InvocationHandler tinylogInfo() {
+    public static InvocationHandler tinylogInfo() {
         return tinylog(Logger::info);
     }
 
@@ -24,7 +24,7 @@ public final class TinylogInvocationHandlers {
      *            The sink to use.
      * @return An invocation handler that prints method invocations to tinylog
      */
-    public static final InvocationHandler tinylog(final Consumer<String> sink) {
+    public static InvocationHandler tinylog(final Consumer<String> sink) {
         return stringFormat(sink);
     }
 

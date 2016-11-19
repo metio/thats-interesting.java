@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Factory for Slf4j sinks.
  */
-public class Slf4jSinks {
+public final class Slf4jSinks {
 
     /**
      * @return A consumer that uses Slf4j

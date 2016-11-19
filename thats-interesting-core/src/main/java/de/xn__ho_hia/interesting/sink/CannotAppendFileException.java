@@ -3,7 +3,7 @@ package de.xn__ho_hia.interesting.sink;
 /**
  * Signals that a file cannot be appended with new data.
  */
-public class CannotAppendFileException extends RuntimeException {
+public final class CannotAppendFileException extends RuntimeException {
 
     private static final long serialVersionUID = -4669042544071294293L;
 

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Factory for Jackson based converters.
  */
-public class JacksonConverters {
+public final class JacksonConverters {
 
     /**
      * @return The configured method invocation converter.
