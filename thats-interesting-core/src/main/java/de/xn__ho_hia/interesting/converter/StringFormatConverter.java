@@ -5,10 +5,10 @@ import java.lang.reflect.Method;
 /**
  * A converter that formats a method invocation according to a string format template.
  */
-public class StringFormatConverter implements MethodInvocationConverter<String> {
+public class StringFormatConverter implements InvocationConverter<String> {
 
     private final String                              format;
-    private final MethodInvocationConverter<Object[]> formatArguments;
+    private final InvocationConverter<Object[]> formatArguments;
 
     /**
      * @param format
@@ -18,7 +18,7 @@ public class StringFormatConverter implements MethodInvocationConverter<String> 
      */
     public StringFormatConverter(
             final String format,
-            final MethodInvocationConverter<Object[]> formatArguments) {
+            final InvocationConverter<Object[]> formatArguments) {
         this.format = format;
         this.formatArguments = formatArguments;
     }

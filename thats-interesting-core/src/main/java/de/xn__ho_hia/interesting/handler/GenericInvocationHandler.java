@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.function.Consumer;
 
-import de.xn__ho_hia.interesting.converter.MethodInvocationConverter;
+import de.xn__ho_hia.interesting.converter.InvocationConverter;
 import de.xn__ho_hia.interesting.filter.InvocationFilter;
 
 /**
@@ -16,7 +16,7 @@ import de.xn__ho_hia.interesting.filter.InvocationFilter;
 public final class GenericInvocationHandler<OUTPUT> extends AbstractNullReturningInvocationHandler {
 
     private final List<InvocationFilter>            filters;
-    private final MethodInvocationConverter<OUTPUT> converter;
+    private final InvocationConverter<OUTPUT> converter;
     private final Consumer<OUTPUT>                  sink;
 
     /**
@@ -29,7 +29,7 @@ public final class GenericInvocationHandler<OUTPUT> extends AbstractNullReturnin
      */
     public GenericInvocationHandler(
             final List<InvocationFilter> filters,
-            final MethodInvocationConverter<OUTPUT> converter,
+            final InvocationConverter<OUTPUT> converter,
             final Consumer<OUTPUT> sink) {
         this.filters = filters;
         this.converter = converter;

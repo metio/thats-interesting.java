@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 /**
  * A converter that formats a method invocation using a Jackson {@link ObjectMapper}.
  */
-public class JsonConverter implements MethodInvocationConverter<String> {
+public class JsonConverter implements InvocationConverter<String> {
 
     private final ObjectMapper objectMapper;
 

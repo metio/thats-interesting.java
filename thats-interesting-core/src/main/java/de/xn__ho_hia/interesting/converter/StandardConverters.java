@@ -27,7 +27,7 @@ public class StandardConverters {
      *            The format template to use.
      * @return The configured method invocation converter.
      */
-    public static final MethodInvocationConverter<String> stringFormat(final String template) {
+    public static final InvocationConverter<String> stringFormat(final String template) {
         return new StringFormatConverter(template, argumentsConverter());
     }
 
@@ -38,9 +38,9 @@ public class StandardConverters {
      *            The argument converter to use.
      * @return The configured method invocation converter.
      */
-    public static final MethodInvocationConverter<String> stringFormat(
+    public static final InvocationConverter<String> stringFormat(
             final String template,
-            final MethodInvocationConverter<Object[]> argumentConverter) {
+            final InvocationConverter<Object[]> argumentConverter) {
         return new StringFormatConverter(template, argumentConverter);
     }
 
@@ -48,7 +48,7 @@ public class StandardConverters {
      * Converter that matches {@link StandardInvocationHandlers#FORMAT_TEMPLATE}
      */
     @SuppressWarnings("null")
-    private static MethodInvocationConverter<Object[]> argumentsConverter() {
+    private static InvocationConverter<Object[]> argumentsConverter() {
         return (proxy, method, args) -> new Object[] {
                 method.getDeclaringClass().getName(),
                 method.getName(),

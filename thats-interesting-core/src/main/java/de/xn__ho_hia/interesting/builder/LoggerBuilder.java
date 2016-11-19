@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import de.xn__ho_hia.interesting.converter.MethodInvocationConverter;
+import de.xn__ho_hia.interesting.converter.InvocationConverter;
 import de.xn__ho_hia.interesting.filter.InvocationFilter;
 import de.xn__ho_hia.interesting.handler.DelegatingInvocationHandler;
 import de.xn__ho_hia.interesting.handler.GenericInvocationHandler;
@@ -68,7 +68,7 @@ public final class LoggerBuilder<LOGGER> {
         private final LoggerBuilder<LOGGER>       loggerBuilder;
 
         private final List<InvocationFilter>      filters = new ArrayList<>();
-        private MethodInvocationConverter<String> converter;
+        private InvocationConverter<String> converter;
 
         /**
          * @param loggerBuilder
@@ -95,7 +95,7 @@ public final class LoggerBuilder<LOGGER> {
          * @return The current builder reconfigured with the given converter.
          */
         public InvocationHandlerBuilder<LOGGER> converter(
-                final MethodInvocationConverter<String> newConverter) {
+                final InvocationConverter<String> newConverter) {
             this.converter = newConverter;
             return this;
         }

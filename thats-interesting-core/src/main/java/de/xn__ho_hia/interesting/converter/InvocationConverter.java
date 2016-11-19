@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
  *            The result type of the method invocation.
  */
 @FunctionalInterface
-public interface MethodInvocationConverter<OUTPUT> {
+public interface InvocationConverter<OUTPUT> {
 
     /**
      * @param proxy

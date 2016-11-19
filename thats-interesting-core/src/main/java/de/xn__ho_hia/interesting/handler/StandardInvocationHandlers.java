@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-import de.xn__ho_hia.interesting.converter.MethodInvocationConverter;
+import de.xn__ho_hia.interesting.converter.InvocationConverter;
 import de.xn__ho_hia.interesting.converter.StandardConverters;
 import de.xn__ho_hia.interesting.sink.StandardSinks;
 
@@ -74,7 +74,7 @@ public final class StandardInvocationHandlers {
      */
     public static final InvocationHandler stringFormat(
             final String template,
-            final MethodInvocationConverter<Object[]> argumentConverter,
+            final InvocationConverter<Object[]> argumentConverter,
             final Consumer<String> sink) {
         return generic(StandardConverters.stringFormat(template, argumentConverter), sink);
     }
@@ -88,7 +88,7 @@ public final class StandardInvocationHandlers {
      *         into the given sink.
      */
     public static final <OUTPUT> InvocationHandler generic(
-            final MethodInvocationConverter<OUTPUT> converter,
+            final InvocationConverter<OUTPUT> converter,
             final Consumer<OUTPUT> sink) {
         return new GenericInvocationHandler<>(new ArrayList<>(), converter, sink);
     }

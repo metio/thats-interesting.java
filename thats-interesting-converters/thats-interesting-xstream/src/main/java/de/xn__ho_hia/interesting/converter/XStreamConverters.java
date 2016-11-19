@@ -14,7 +14,7 @@ public final class XStreamConverters {
     /**
      * @return The configured method invocation converter.
      */
-    public static final MethodInvocationConverter<String> xml() {
+    public static final InvocationConverter<String> xml() {
         final XStream xstream = new XStream(new StaxDriver());
         xstream.registerConverter(new MethodInvocationModelConverter());
         xstream.alias("interesting", MethodInvocationModel.class); //$NON-NLS-1$
@@ -26,7 +26,7 @@ public final class XStreamConverters {
      *            The xstream instance to use.
      * @return The configured method invocation converter.
      */
-    public static final MethodInvocationConverter<String> xml(final XStream xstream) {
+    public static final InvocationConverter<String> xml(final XStream xstream) {
         return new XStreamConverter(xstream);
     }
 
