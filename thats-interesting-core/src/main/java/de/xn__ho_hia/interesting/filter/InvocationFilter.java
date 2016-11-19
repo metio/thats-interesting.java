@@ -1,4 +1,4 @@
-package de.xn__ho_hia.interesting;
+package de.xn__ho_hia.interesting.filter;
 
 import java.lang.reflect.Method;
 

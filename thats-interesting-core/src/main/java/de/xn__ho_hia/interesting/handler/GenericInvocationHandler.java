@@ -4,8 +4,8 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.function.Consumer;
 
-import de.xn__ho_hia.interesting.InvocationFilter;
 import de.xn__ho_hia.interesting.converter.MethodInvocationConverter;
+import de.xn__ho_hia.interesting.filter.InvocationFilter;
 
 /**
  * Generic invocation handler that calls a converter function and a consumer.

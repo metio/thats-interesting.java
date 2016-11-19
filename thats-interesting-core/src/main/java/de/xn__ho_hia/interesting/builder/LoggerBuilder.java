@@ -1,4 +1,4 @@
-package de.xn__ho_hia.interesting;
+package de.xn__ho_hia.interesting.builder;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import de.xn__ho_hia.interesting.converter.MethodInvocationConverter;
+import de.xn__ho_hia.interesting.filter.InvocationFilter;
 import de.xn__ho_hia.interesting.handler.DelegatingInvocationHandler;
 import de.xn__ho_hia.interesting.handler.GenericInvocationHandler;
 
