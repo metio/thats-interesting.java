@@ -6,4 +6,13 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>thats-interesting-kafka</artifactId>
+
+  <dependencies>
+    <dependency>
+        <groupId>org.apache.kafka</groupId>
+        <artifactId>kafka-clients</artifactId>
+        <version>0.10.1.0</version>
+    </dependency>
+  </dependencies>
+
 </project>
