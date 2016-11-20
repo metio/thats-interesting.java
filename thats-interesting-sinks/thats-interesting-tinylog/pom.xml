@@ -19,7 +19,6 @@
     <dependency>
       <groupId>org.tinylog</groupId>
       <artifactId>tinylog</artifactId>
-      <version>1.2-beta-1</version>
     </dependency>
   </dependencies>
 
