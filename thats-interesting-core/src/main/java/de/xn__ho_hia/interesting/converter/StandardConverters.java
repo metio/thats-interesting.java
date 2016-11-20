@@ -1,6 +1,9 @@
 package de.xn__ho_hia.interesting.converter;
 
 import java.lang.reflect.Parameter;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
 
 import com.github.sebhoss.utils.strings.S;
 
@@ -49,18 +52,24 @@ public final class StandardConverters {
      */
     @SuppressWarnings("null")
     private static InvocationConverter<Object[]> argumentsConverter() {
-        return (proxy, method, args) -> new Object[] {
+        return (proxy, method, args, extras) -> new Object[] {
                 method.getDeclaringClass().getName(),
                 method.getName(),
-                combineNamesAndValues(method.getParameters(), args)
+                combineNamesAndValues(method.getParameters(), args, extras)
         };
     }
 
     @SuppressWarnings("null")
-    private static String combineNamesAndValues(final Parameter[] parameters, final Object[] args) {
-        final String[] namesAndValues = new String[args.length];
+    private static String combineNamesAndValues(final Parameter[] parameters, final Object[] args,
+            final Map<String, Supplier<Object>> extras) {
+        final String[] namesAndValues = new String[args.length + extras.size()];
         for (int index = 0; index < args.length; index++) {
             namesAndValues[index] = String.format(NAME_VALUE_TEMPLATE, parameters[index].getName(), args[index]);
+        }
+        int extraIndex = args.length;
+        for (final Entry<String, Supplier<Object>> entry : extras.entrySet()) {
+            namesAndValues[extraIndex] = String.format(NAME_VALUE_TEMPLATE, entry.getKey(), entry.getValue().get());
+            extraIndex++;
         }
         return S.arrayToString(namesAndValues);
     }

@@ -1,7 +1,5 @@
 package de.xn__ho_hia.interesting;
 
-import static de.xn__ho_hia.interesting.converter.StandardConverters.stringFormat;
-import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.FORMAT_TEMPLATE;
 import static de.xn__ho_hia.interesting.sink.StandardSinks.systemOut;
 
 import java.util.HashMap;
@@ -28,10 +26,8 @@ public class InterestedTest {
         final TestInterface instance = Interested.in(TestInterface.class)
                 .buildHandler()
                 .converter(XStreamConverters.xml())
-                .sinks(systemOut().andThen(systemOut()))
-                .buildHandler()
-                .converter(stringFormat(FORMAT_TEMPLATE))
-                .sinks(systemOut().andThen(systemOut()))
+                .withStaticExtra("extra-key", "extra-value")
+                .sinks(systemOut())
                 .createLogger();
 
         // when

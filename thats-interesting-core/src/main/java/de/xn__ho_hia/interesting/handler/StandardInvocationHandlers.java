@@ -3,6 +3,7 @@ package de.xn__ho_hia.interesting.handler;
 import java.lang.reflect.InvocationHandler;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.function.Consumer;
 
 import de.xn__ho_hia.interesting.converter.InvocationConverter;
@@ -91,7 +92,11 @@ public final class StandardInvocationHandlers {
     public static final <OUTPUT> InvocationHandler generic(
             final InvocationConverter<OUTPUT> converter,
             final Consumer<OUTPUT> sink) {
-        return new GenericInvocationHandler<>(new DelegatingInvocationFilter(new ArrayList<>()), converter, sink);
+        return new GenericInvocationHandler<>(
+                new DelegatingInvocationFilter(new ArrayList<>()),
+                converter,
+                sink,
+                new HashMap<>());
     }
 
 }

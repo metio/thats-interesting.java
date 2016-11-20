@@ -1,6 +1,8 @@
 package de.xn__ho_hia.interesting.converter;
 
 import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * A converter for method invocations.
@@ -18,8 +20,14 @@ public interface InvocationConverter<OUTPUT> {
      *            The invoked method.
      * @param args
      *            The used method parameters.
+     * @param extras
+     *            The extra values to use.
      * @return The computed result.
      */
-    OUTPUT convert(final Object proxy, final Method method, final Object[] args);
+    OUTPUT convert(
+            Object proxy,
+            Method method,
+            Object[] args,
+            Map<String, Supplier<Object>> extras);
 
 }

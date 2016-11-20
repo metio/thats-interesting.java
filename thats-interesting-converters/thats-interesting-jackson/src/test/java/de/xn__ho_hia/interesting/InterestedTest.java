@@ -1,7 +1,5 @@
 package de.xn__ho_hia.interesting;
 
-import static de.xn__ho_hia.interesting.converter.StandardConverters.stringFormat;
-import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.FORMAT_TEMPLATE;
 import static de.xn__ho_hia.interesting.sink.StandardSinks.systemOut;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,16 +19,14 @@ import de.xn__ho_hia.interesting.converter.JsonConverter;
 public class InterestedTest {
 
     @Test
-    @SuppressWarnings({ "nls", "null", "static-method" })
+    @SuppressWarnings({ "nls", "static-method" })
     void shouldCreateNonNullProxyForInterface() {
         // given
         final TestInterface instance = Interested.in(TestInterface.class)
                 .buildHandler()
                 .converter(new JsonConverter(new ObjectMapper()))
-                .sinks(systemOut().andThen(systemOut()))
-                .buildHandler()
-                .converter(stringFormat(FORMAT_TEMPLATE))
-                .sinks(systemOut().andThen(systemOut()))
+                .withStaticExtra("extra-key", "extra-value")
+                .sinks(systemOut())
                 .createLogger();
 
         // when

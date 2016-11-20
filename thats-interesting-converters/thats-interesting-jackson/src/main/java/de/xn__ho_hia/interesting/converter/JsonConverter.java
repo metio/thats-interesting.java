@@ -2,6 +2,9 @@ package de.xn__ho_hia.interesting.converter;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,8 +26,9 @@ public final class JsonConverter implements InvocationConverter<String> {
     }
 
     @Override
-    public String convert(final Object proxy, final Method method, final Object[] args) {
-        final ObjectNode objectNode = createOutputModel(method, args);
+    public String convert(final Object proxy, final Method method, final Object[] args,
+            final Map<String, Supplier<Object>> extras) {
+        final ObjectNode objectNode = createOutputModel(method, args, extras);
         return convertToString(objectNode);
     }
 
@@ -38,12 +42,16 @@ public final class JsonConverter implements InvocationConverter<String> {
     }
 
     @SuppressWarnings("null")
-    private ObjectNode createOutputModel(final Method method, final Object[] args) {
+    private ObjectNode createOutputModel(final Method method, final Object[] args,
+            final Map<String, Supplier<Object>> extras) {
         final Parameter[] parameters = method.getParameters();
         final ObjectNode objectNode = objectMapper.createObjectNode();
 
         for (int index = 0; index < args.length; index++) {
             objectNode.putPOJO(parameters[index].getName(), args[index]);
+        }
+        for (final Entry<String, Supplier<Object>> entry : extras.entrySet()) {
+            objectNode.putPOJO(entry.getKey(), entry.getValue().get());
         }
 
         return objectNode;

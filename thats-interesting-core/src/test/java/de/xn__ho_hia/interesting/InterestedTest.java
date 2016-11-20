@@ -22,9 +22,16 @@ public class InterestedTest {
     void shouldCreateNonNullProxyForInterface() {
         // given
         final TestInterface instance = Interested.in(TestInterface.class)
+                .withStaticExtra("global-extra-key", "global-extra-value")
                 .buildHandler()
                 .filters(methods("someFilteredMethod"))
                 .converter(stringFormat(FORMAT_TEMPLATE))
+                .withStaticExtra("extra-key", "extra-value")
+                .sinks(systemOut())
+                .buildHandler()
+                .filters(methods("someMethod"))
+                .converter(stringFormat(FORMAT_TEMPLATE))
+                .withStaticExtra("someMethod-extra-key", "someMethod-extra-value")
                 .sinks(systemOut())
                 .createLogger();
 
