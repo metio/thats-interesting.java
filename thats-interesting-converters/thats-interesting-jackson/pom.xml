@@ -3,12 +3,12 @@
 
   <parent>
     <groupId>de.xn--ho-hia.thats-interesting</groupId>
-    <artifactId>thats-interesting.java</artifactId>
+    <artifactId>thats-interesting-converters</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>thats-interesting-jackson</artifactId>
-  <name>That's Interesting :: Jackson</name>
+  <name>That's Interesting :: Converters :: Jackson</name>
 
   <dependencies>
     <dependency>

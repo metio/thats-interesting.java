@@ -2,9 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>de.xn--ho-hia.thats-interesting</groupId>
-    <artifactId>thats-interesting.java</artifactId>
+    <artifactId>thats-interesting-sinks</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>thats-interesting-commons-logging</artifactId>
-  <name>That's Interesting :: Commons Logging</name>
+  <name>That's Interesting :: Sinks :: Commons Logging</name>
 </project>

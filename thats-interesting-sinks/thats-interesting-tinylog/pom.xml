@@ -3,12 +3,12 @@
 
   <parent>
     <groupId>de.xn--ho-hia.thats-interesting</groupId>
-    <artifactId>thats-interesting.java</artifactId>
+    <artifactId>thats-interesting-sinks</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>thats-interesting-tinylog</artifactId>
-  <name>That's Interesting :: tinylog</name>
+  <name>That's Interesting :: Sinks :: tinylog</name>
 
   <dependencies>
     <dependency>
