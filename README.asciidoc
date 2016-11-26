@@ -1,5 +1,7 @@
 = That's Interesting
 
+image:https://img.shields.io/badge/license-cc%20zero-000000.svg?style=flat-square["CC Zero", link="http://creativecommons.org/publicdomain/zero/1.0/"]
+
 *That's interesting* is a strongly typed logging framework targeting applications that want to aggregate their log messages into a single system, such as the ever famous ELK stack.
 
 == Usage
@@ -148,3 +150,12 @@ Which then produces:
 Configuring your points of interest outside of the classes that are using those has the advantage that none of the using classes have a compile time dependency on any classes in this library.
 
 Manage your points of interest in their own source module. Configure your Kibana dashboard according to the interfaces.
+
+== License
+
+To the extent possible under law, the author(s) have dedicated all copyright
+and related and neighboring rights to this software to the public domain
+worldwide. This software is distributed without any warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication along
+with this software. If not, see http://creativecommons.org/publicdomain/zero/1.0/.
