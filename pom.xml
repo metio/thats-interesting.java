@@ -20,10 +20,6 @@
   <name>That's Interesting</name>
   <description>Strongly-typed logging framework</description>
 
-  <properties>
-    <junit.platform.version>1.0.0-M2</junit.platform.version>
-  </properties>
-
   <modules>
     <module>thats-interesting-core</module>
     <module>thats-interesting-converters</module>
@@ -57,7 +53,7 @@
           <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>${junit.platform.version}</version>
+            <version>${version.junit5.platform}</version>
           </dependency>
         </dependencies>
       </plugin>

@@ -1,11 +1,11 @@
 package de.xn__ho_hia.interesting.converter;
 
 import java.lang.reflect.Parameter;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
-
-import com.github.sebhoss.utils.strings.S;
+import java.util.stream.Collectors;
 
 import de.xn__ho_hia.interesting.handler.StandardInvocationHandlers;
 
@@ -71,7 +71,12 @@ public final class StandardConverters {
             namesAndValues[extraIndex] = String.format(NAME_VALUE_TEMPLATE, entry.getKey(), entry.getValue().get());
             extraIndex++;
         }
-        return S.arrayToString(namesAndValues);
+        return arrayToString(namesAndValues);
+    }
+
+    private static final String arrayToString(String[] arguments) {
+    	return Arrays.stream(arguments)
+    			.collect(Collectors.joining(", ", "[", "]"));
     }
 
 }
