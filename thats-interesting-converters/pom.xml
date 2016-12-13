@@ -19,6 +19,7 @@
     <module>thats-interesting-json-io</module>
     <module>thats-interesting-jsr353</module>
     <module>thats-interesting-moshi</module>
+    <module>thats-interesting-simple</module>
     <module>thats-interesting-xstream</module>
   </modules>
 
