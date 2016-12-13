@@ -16,6 +16,7 @@
     <module>thats-interesting-genson</module>
     <module>thats-interesting-gson</module>
     <module>thats-interesting-jackson</module>
+    <module>thats-interesting-jibx</module>
     <module>thats-interesting-json-io</module>
     <module>thats-interesting-jsr353</module>
     <module>thats-interesting-moshi</module>
