@@ -22,6 +22,9 @@
     <module>thats-interesting-moshi</module>
     <module>thats-interesting-simple</module>
     <module>thats-interesting-xstream</module>
+    <!-- TODO: Add Eclipse MOXy -->
+    <!-- TODO: Add JAXB -->
+    <!-- TODO: Add LoganSquare -->
   </modules>
 
 </project>
