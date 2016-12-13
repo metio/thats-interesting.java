@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
-import de.xn__ho_hia.interesting.converter.JsonConverter;
+import de.xn__ho_hia.interesting.converter.JacksonConverter;
 
 /**
  *
@@ -24,7 +24,7 @@ public class InterestedTest {
         // given
         final TestInterface instance = Interested.in(TestInterface.class)
                 .buildHandler()
-                .converter(new JsonConverter(new ObjectMapper()))
+                .converter(new JacksonConverter(new ObjectMapper()))
                 .withStaticExtra("extra-key", "extra-value")
                 .sinks(systemOut())
                 .createLogger();

@@ -20,7 +20,7 @@ public final class JacksonConverters {
      * @return The configured method invocation converter.
      */
     public static final InvocationConverter<String> json(final ObjectMapper objectMapper) {
-        return new JsonConverter(objectMapper);
+        return new JacksonConverter(objectMapper);
     }
 
 }

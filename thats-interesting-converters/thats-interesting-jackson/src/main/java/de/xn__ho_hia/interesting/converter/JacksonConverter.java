@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 /**
  * A converter that formats a method invocation using a Jackson {@link ObjectMapper}.
  */
-public final class JsonConverter implements InvocationConverter<String> {
+public final class JacksonConverter implements InvocationConverter<String> {
 
     private final ObjectMapper objectMapper;
 
@@ -21,7 +21,7 @@ public final class JsonConverter implements InvocationConverter<String> {
      * @param objectMapper
      *            The object mapper to use.
      */
-    public JsonConverter(final ObjectMapper objectMapper) {
+    public JacksonConverter(final ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
