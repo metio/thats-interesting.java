@@ -10,4 +10,16 @@
   <artifactId>thats-interesting-gson</artifactId>
   <name>That's Interesting :: Converters :: GSON</name>
 
+  <dependencies>
+    <dependency>
+      <groupId>de.xn--ho-hia.thats-interesting</groupId>
+      <artifactId>thats-interesting-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
+  </dependencies>
+
 </project>
