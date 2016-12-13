@@ -12,6 +12,7 @@
   <packaging>pom</packaging>
 
   <modules>
+    <module>thats-interesting-fastjson</module>
     <module>thats-interesting-genson</module>
     <module>thats-interesting-gson</module>
     <module>thats-interesting-jackson</module>
