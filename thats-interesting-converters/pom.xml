@@ -11,11 +11,11 @@
   <packaging>pom</packaging>
 
   <modules>
+    <module>thats-interesting-genson</module>
     <module>thats-interesting-gson</module>
     <module>thats-interesting-jackson</module>
-    <module>thats-interesting-xstream</module>
     <module>thats-interesting-jsr353</module>
-    <module>thats-interesting-genson</module>
+    <module>thats-interesting-xstream</module>
   </modules>
 
 </project>
