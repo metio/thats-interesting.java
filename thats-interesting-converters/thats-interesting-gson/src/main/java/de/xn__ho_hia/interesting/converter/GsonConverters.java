@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 /**
  * Factory for Gson based converters.
  */
-public final class JacksonConverters {
+public final class GsonConverters {
 
     /**
      * @return The configured method invocation converter.

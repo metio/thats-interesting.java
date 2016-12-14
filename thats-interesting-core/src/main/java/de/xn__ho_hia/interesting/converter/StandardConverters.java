@@ -59,7 +59,6 @@ public final class StandardConverters {
         };
     }
 
-    @SuppressWarnings("null")
     private static String combineNamesAndValues(final Parameter[] parameters, final Object[] args,
             final Map<String, Supplier<Object>> extras) {
         final String[] namesAndValues = new String[args.length + extras.size()];
@@ -74,9 +73,10 @@ public final class StandardConverters {
         return arrayToString(namesAndValues);
     }
 
-    private static final String arrayToString(String[] arguments) {
-    	return Arrays.stream(arguments)
-    			.collect(Collectors.joining(", ", "[", "]"));
+    @SuppressWarnings({ "nls", "null" })
+    private static final String arrayToString(final String[] arguments) {
+        return Arrays.stream(arguments)
+                .collect(Collectors.joining(", ", "[", "]"));
     }
 
 }
