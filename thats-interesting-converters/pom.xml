@@ -16,7 +16,10 @@
     <module>thats-interesting-genson</module>
     <module>thats-interesting-gson</module>
     <module>thats-interesting-jackson</module>
+    <!-- deactivated because of bnd error: The JAR/ZIP file (~/.m2/repository/org/jibx/jibx-run/1.3.1/jibx-run-1.3.1.jar) seems corrupted, error: zip file is empty -->
+    <!--
     <module>thats-interesting-jibx</module>
+     -->
     <module>thats-interesting-json-io</module>
     <module>thats-interesting-jsr353</module>
     <module>thats-interesting-moshi</module>
