@@ -44,8 +44,8 @@ public final class GsonConverter implements InvocationConverter<String> {
                 jsonWriter.jsonValue(gson.toJson(entry.getValue().get()));
             }
             jsonWriter.endObject().close();
-        } catch (final IOException e) {
-            e.printStackTrace();
+        } catch (final IOException exception) {
+            throw new IllegalStateException(exception);
         }
 
         return stringWriter.toString();
