@@ -16,38 +16,39 @@ import com.google.gson.stream.JsonWriter;
  */
 public final class GsonConverter implements InvocationConverter<String> {
 
-	private final Gson gson;
+    private final Gson gson;
 
-	/**
-	 * @param gson
-	 *            The Gson instance to use.
-	 */
-	public GsonConverter(final Gson gson) {
-		this.gson = gson;
-	}
+    /**
+     * @param gson
+     *            The Gson instance to use.
+     */
+    public GsonConverter(final Gson gson) {
+        this.gson = gson;
+    }
 
-	@Override
-	public String convert(final Object proxy, final Method method, final Object[] args,
-			final Map<String, Supplier<Object>> extras) {
-		final StringWriter writer = new StringWriter();
-		try {
-			final Parameter[] parameters = method.getParameters();
-			final JsonWriter jsonWriter = gson.newJsonWriter(writer).beginObject();
+    @Override
+    @SuppressWarnings("null")
+    public String convert(final Object proxy, final Method method, final Object[] args,
+            final Map<String, Supplier<Object>> extras) {
+        final StringWriter stringWriter = new StringWriter();
+        final Parameter[] parameters = method.getParameters();
 
-			for (int index = 0; index < args.length; index++) {
-				jsonWriter.name(parameters[index].getName());
-				jsonWriter.jsonValue(gson.toJson(args[index]));
-			}
-			for (final Entry<String, Supplier<Object>> entry : extras.entrySet()) {
-				jsonWriter.name(entry.getKey());
-				jsonWriter.jsonValue(gson.toJson(entry.getValue().get()));
-			}
+        try (final JsonWriter jsonWriter = gson.newJsonWriter(stringWriter)) {
+            jsonWriter.beginObject();
+            for (int index = 0; index < args.length; index++) {
+                jsonWriter.name(parameters[index].getName());
+                jsonWriter.jsonValue(gson.toJson(args[index]));
+            }
+            for (final Entry<String, Supplier<Object>> entry : extras.entrySet()) {
+                jsonWriter.name(entry.getKey());
+                jsonWriter.jsonValue(gson.toJson(entry.getValue().get()));
+            }
+            jsonWriter.endObject().close();
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
 
-			jsonWriter.endObject().close();
-		} catch (final IOException e) {
-			e.printStackTrace();
-		}
-		return writer.toString();
-	}
+        return stringWriter.toString();
+    }
 
 }
