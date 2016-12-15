@@ -10,8 +10,8 @@ public final class GsonConverters {
     /**
      * @return The configured method invocation converter.
      */
-    public static final InvocationConverter<String> json() {
-        return json(new Gson());
+    public static final InvocationConverter<String> jsonWithGson() {
+        return jsonWithGson(new Gson());
     }
 
     /**
@@ -19,7 +19,7 @@ public final class GsonConverters {
      *            The Gson instance to use.
      * @return The configured method invocation converter.
      */
-    public static final InvocationConverter<String> json(final Gson gson) {
+    public static final InvocationConverter<String> jsonWithGson(final Gson gson) {
         return new GsonConverter(gson);
     }
 
