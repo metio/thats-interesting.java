@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * A converter that formats a method invocation using a GSON instance.
+ * A converter that formats a method invocation using a Gson instance.
  */
 public final class GsonConverter implements InvocationConverter<String> {
 
@@ -35,20 +35,31 @@ public final class GsonConverter implements InvocationConverter<String> {
 
         try (final JsonWriter jsonWriter = gson.newJsonWriter(stringWriter)) {
             jsonWriter.beginObject();
-            for (int index = 0; index < args.length; index++) {
-                jsonWriter.name(parameters[index].getName());
-                jsonWriter.jsonValue(gson.toJson(args[index]));
-            }
-            for (final Entry<String, Supplier<Object>> entry : extras.entrySet()) {
-                jsonWriter.name(entry.getKey());
-                jsonWriter.jsonValue(gson.toJson(entry.getValue().get()));
-            }
-            jsonWriter.endObject().close();
+            writeParameters(jsonWriter, parameters, args);
+            writeExtras(jsonWriter, extras);
+            jsonWriter.endObject();
+            jsonWriter.close();
         } catch (final IOException exception) {
             throw new IllegalStateException(exception);
         }
 
         return stringWriter.toString();
+    }
+
+    private void writeParameters(final JsonWriter jsonWriter, final Parameter[] parameters, final Object[] args)
+            throws IOException {
+        for (int index = 0; index < args.length; index++) {
+            jsonWriter.name(parameters[index].getName());
+            jsonWriter.jsonValue(gson.toJson(args[index]));
+        }
+    }
+
+    private void writeExtras(final JsonWriter jsonWriter, final Map<String, Supplier<Object>> extras)
+            throws IOException {
+        for (final Entry<String, Supplier<Object>> entry : extras.entrySet()) {
+            jsonWriter.name(entry.getKey());
+            jsonWriter.jsonValue(gson.toJson(entry.getValue().get()));
+        }
     }
 
 }
