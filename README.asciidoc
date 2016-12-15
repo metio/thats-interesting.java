@@ -149,7 +149,7 @@ Which then produces:
 
 Configuring your points of interest outside of the classes that are using those has the advantage that none of the using classes have a compile time dependency on any classes in this library.
 
-Manage your points of interest in their own source module. Configure your Kibana dashboard according to the interfaces.
+Manage your points of interest in their own source module. Configure your Kibana dashboard according to the interfaces or vice versa.
 
 == License
 
