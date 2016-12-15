@@ -2,8 +2,6 @@ package de.xn__ho_hia.interesting;
 
 import static de.xn__ho_hia.interesting.converter.StandardConverters.stringFormat;
 import static de.xn__ho_hia.interesting.filter.StandardInvocationFilters.methods;
-import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.FORMAT_TEMPLATE;
-import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.standardArgumentsConverter;
 import static de.xn__ho_hia.interesting.sink.StandardSinks.systemOut;
 
 import org.junit.jupiter.api.Assertions;
@@ -26,12 +24,12 @@ public class InterestedTest {
                 .withStaticExtra("global-extra-key", "global-extra-value")
                 .buildHandler()
                 .filters(methods("someFilteredMethod"))
-                .converter(stringFormat(FORMAT_TEMPLATE, standardArgumentsConverter()))
+                .converter(stringFormat())
                 .withStaticExtra("extra-key", "extra-value")
                 .sinks(systemOut())
                 .buildHandler()
                 .filters(methods("someMethod"))
-                .converter(stringFormat(FORMAT_TEMPLATE, standardArgumentsConverter()))
+                .converter(stringFormat())
                 .withStaticExtra("someMethod-extra-key", "someMethod-extra-value")
                 .sinks(systemOut())
                 .createLogger();
