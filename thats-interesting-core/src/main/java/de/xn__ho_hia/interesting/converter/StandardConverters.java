@@ -80,4 +80,8 @@ public final class StandardConverters {
                 .collect(Collectors.joining(", ", "[", "]"));
     }
 
+    private StandardConverters() {
+        // factory class
+    }
+
 }

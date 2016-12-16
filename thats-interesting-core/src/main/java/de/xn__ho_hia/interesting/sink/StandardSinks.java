@@ -62,4 +62,8 @@ public final class StandardSinks {
         };
     }
 
+    private StandardSinks() {
+        // factory class
+    }
+
 }

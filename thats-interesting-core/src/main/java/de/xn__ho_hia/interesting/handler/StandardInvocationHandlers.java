@@ -97,4 +97,8 @@ public final class StandardInvocationHandlers {
                 new HashMap<>());
     }
 
+    private StandardInvocationHandlers() {
+        // factory class
+    }
+
 }
