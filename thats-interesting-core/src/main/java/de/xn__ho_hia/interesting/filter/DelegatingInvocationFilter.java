@@ -1,20 +1,20 @@
 package de.xn__ho_hia.interesting.filter;
 
 import java.lang.reflect.Method;
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Filter that delegates to other filters.
  */
 public final class DelegatingInvocationFilter implements InvocationFilter {
 
-    private final List<InvocationFilter> filters;
+    private final Collection<InvocationFilter> filters;
 
     /**
      * @param filters
      *            The filters to use.
      */
-    public DelegatingInvocationFilter(final List<InvocationFilter> filters) {
+    public DelegatingInvocationFilter(final Collection<InvocationFilter> filters) {
         this.filters = filters;
     }
 
