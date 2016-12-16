@@ -3,6 +3,7 @@ package de.xn__ho_hia.interesting.handler;
 import java.lang.reflect.InvocationHandler;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.function.Consumer;
 
@@ -21,8 +22,9 @@ public final class StandardInvocationHandlers {
      *            The invocation handlers to delegate to.
      * @return An delegating invocation handler that calls all given handlers in order they were given.
      */
+    @SuppressWarnings("null")
     public static final InvocationHandler delegate(final InvocationHandler... handlers) {
-        return new DelegatingInvocationHandler(handlers);
+        return new DelegatingInvocationHandler(Arrays.asList(handlers));
     }
 
     /**

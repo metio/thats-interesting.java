@@ -1,6 +1,7 @@
 package de.xn__ho_hia.interesting.handler;
 
 import java.lang.reflect.Method;
+import java.util.Collections;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -31,6 +32,7 @@ public final class GenericInvocationHandler<OUTPUT> extends AbstractNullReturnin
      * @param extras
      *            The extra values to use.
      */
+    @SuppressWarnings("null")
     public GenericInvocationHandler(
             final InvocationFilter filter,
             final InvocationConverter<OUTPUT> converter,
@@ -39,7 +41,7 @@ public final class GenericInvocationHandler<OUTPUT> extends AbstractNullReturnin
         this.filter = filter;
         this.converter = converter;
         this.sink = sink;
-        this.extras = extras;
+        this.extras = Collections.unmodifiableMap(extras);
     }
 
     @Override
