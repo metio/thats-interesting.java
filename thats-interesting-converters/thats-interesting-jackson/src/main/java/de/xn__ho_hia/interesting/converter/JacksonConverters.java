@@ -23,4 +23,8 @@ public final class JacksonConverters {
         return new JacksonConverter(objectMapper);
     }
 
+    private JacksonConverters() {
+        // factory class
+    }
+
 }
