@@ -2,6 +2,7 @@ package de.xn__ho_hia.interesting.converter;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
@@ -32,6 +33,31 @@ public final class JacksonConverter implements InvocationConverter<String> {
         return convertToString(objectNode);
     }
 
+    @SuppressWarnings({ "nls", "null" })
+    private ObjectNode createOutputModel(final Method method, final Object[] args,
+            final Map<String, Supplier<Object>> extras) {
+        final ObjectNode rootNode = objectMapper.createObjectNode();
+
+        rootNode.put("class", method.getDeclaringClass().getName());
+        rootNode.put("method", method.getName());
+        rootNode.putPOJO("arguments", createArgumentsModel(method.getParameters(), args));
+
+        for (final Entry<String, Supplier<Object>> entry : extras.entrySet()) {
+            rootNode.putPOJO(entry.getKey(), entry.getValue().get());
+        }
+
+        return rootNode;
+    }
+
+    @SuppressWarnings("null")
+    private static Map<String, Object> createArgumentsModel(final Parameter[] parameters, final Object[] args) {
+        final Map<String, Object> argumentsMap = new LinkedHashMap<>(parameters.length);
+        for (int index = 0; index < args.length; index++) {
+            argumentsMap.put(parameters[index].getName(), args[index]);
+        }
+        return argumentsMap;
+    }
+
     @SuppressWarnings("null")
     private String convertToString(final ObjectNode objectNode) {
         try {
@@ -39,22 +65,6 @@ public final class JacksonConverter implements InvocationConverter<String> {
         } catch (final JsonProcessingException exception) {
             throw new IllegalStateException(exception);
         }
-    }
-
-    @SuppressWarnings("null")
-    private ObjectNode createOutputModel(final Method method, final Object[] args,
-            final Map<String, Supplier<Object>> extras) {
-        final Parameter[] parameters = method.getParameters();
-        final ObjectNode objectNode = objectMapper.createObjectNode();
-
-        for (int index = 0; index < args.length; index++) {
-            objectNode.putPOJO(parameters[index].getName(), args[index]);
-        }
-        for (final Entry<String, Supplier<Object>> entry : extras.entrySet()) {
-            objectNode.putPOJO(entry.getKey(), entry.getValue().get());
-        }
-
-        return objectNode;
     }
 
 }

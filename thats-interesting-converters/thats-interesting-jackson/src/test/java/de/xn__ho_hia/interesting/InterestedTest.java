@@ -30,7 +30,7 @@ public class InterestedTest {
                 .createLogger();
 
         // when
-        instance.someMethod("test"); //$NON-NLS-1$
+        instance.someMethod("test");
 
         final Pair pair = new Pair();
         pair.left = "one";
