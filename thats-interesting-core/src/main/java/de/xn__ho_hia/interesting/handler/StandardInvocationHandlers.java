@@ -5,11 +5,15 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import de.xn__ho_hia.interesting.converter.InvocationConverter;
 import de.xn__ho_hia.interesting.converter.StandardConverters;
 import de.xn__ho_hia.interesting.filter.DelegatingInvocationFilter;
+import de.xn__ho_hia.interesting.filter.InvocationFilter;
 import de.xn__ho_hia.interesting.sink.StandardSinks;
 
 /**
@@ -24,7 +28,16 @@ public final class StandardInvocationHandlers {
      */
     @SuppressWarnings("null")
     public static final InvocationHandler delegate(final InvocationHandler... handlers) {
-        return new DelegatingInvocationHandler(Arrays.asList(handlers));
+        return delegate(Arrays.asList(handlers));
+    }
+
+    /**
+     * @param handlers
+     *            The invocation handlers to delegate to.
+     * @return An delegating invocation handler that calls all given handlers in order they were given.
+     */
+    public static final InvocationHandler delegate(final List<InvocationHandler> handlers) {
+        return new DelegatingInvocationHandler(handlers);
     }
 
     /**
@@ -90,11 +103,35 @@ public final class StandardInvocationHandlers {
     public static final <OUTPUT> InvocationHandler generic(
             final InvocationConverter<OUTPUT> converter,
             final Consumer<OUTPUT> sink) {
-        return new GenericInvocationHandler<>(
+        return generic(
                 new DelegatingInvocationFilter(new ArrayList<>()),
                 converter,
                 sink,
                 new HashMap<>());
+    }
+
+    /**
+     * @param filter
+     *            The filter to use.
+     * @param converter
+     *            The converter to use.
+     * @param sink
+     *            The output sink to use.
+     * @param extras
+     *            The extras to apply.
+     * @return An invocation handler that converts method invocations with the given converter and writes the result
+     *         into the given sink.
+     */
+    public static final <OUTPUT> InvocationHandler generic(
+            final InvocationFilter filter,
+            final InvocationConverter<OUTPUT> converter,
+            final Consumer<OUTPUT> sink,
+            final Map<String, Supplier<Object>> extras) {
+        return new GenericInvocationHandler<>(
+                filter,
+                converter,
+                sink,
+                extras);
     }
 
     private StandardInvocationHandlers() {

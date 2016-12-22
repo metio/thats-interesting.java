@@ -4,17 +4,16 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import de.xn__ho_hia.interesting.converter.InvocationConverter;
-import de.xn__ho_hia.interesting.filter.DelegatingInvocationFilter;
 import de.xn__ho_hia.interesting.filter.InvocationFilter;
-import de.xn__ho_hia.interesting.handler.DelegatingInvocationHandler;
-import de.xn__ho_hia.interesting.handler.GenericInvocationHandler;
+import de.xn__ho_hia.interesting.filter.StandardInvocationFilters;
+import de.xn__ho_hia.interesting.handler.StandardInvocationHandlers;
 
 /**
  * @param <LOGGER>
@@ -22,9 +21,9 @@ import de.xn__ho_hia.interesting.handler.GenericInvocationHandler;
  */
 public final class LoggerBuilder<LOGGER> {
 
-    private final Class<LOGGER>           logger;
-    private final List<InvocationHandler> handlers;
-    final Map<String, Supplier<Object>>   extras;
+    private final Class<LOGGER>                 logger;
+    private final List<InvocationHandler>       handlers;
+    private final Map<String, Supplier<Object>> extras;
 
     /**
      * @param logger
@@ -92,7 +91,11 @@ public final class LoggerBuilder<LOGGER> {
         return (LOGGER) Proxy.newProxyInstance(
                 logger.getClassLoader(),
                 new Class<?>[] { logger },
-                new DelegatingInvocationHandler(handlers));
+                StandardInvocationHandlers.delegate(handlers));
+    }
+
+    Map<String, Supplier<Object>> getCopyOfExtras() {
+        return new LinkedHashMap<>(extras);
     }
 
     /**
@@ -114,7 +117,7 @@ public final class LoggerBuilder<LOGGER> {
         @SuppressWarnings("null")
         public InvocationHandlerBuilder(final LoggerBuilder<LOGGER> loggerBuilder) {
             this.loggerBuilder = loggerBuilder;
-            extras = new HashMap<>(loggerBuilder.extras);
+            extras = loggerBuilder.getCopyOfExtras();
         }
 
         /**
@@ -170,8 +173,8 @@ public final class LoggerBuilder<LOGGER> {
          */
         public LoggerBuilder<LOGGER> sinks(final Consumer<String> sink) {
             return loggerBuilder.invocationHandler(
-                    new GenericInvocationHandler<>(
-                            new DelegatingInvocationFilter(filters),
+                    StandardInvocationHandlers.generic(
+                            StandardInvocationFilters.delegate(filters),
                             converter,
                             sink,
                             extras));
