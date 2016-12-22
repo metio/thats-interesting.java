@@ -1,7 +1,7 @@
 package de.xn__ho_hia.interesting.filter;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Collection;
 
 /**
  *
@@ -16,7 +16,7 @@ public final class StandardInvocationFilters {
      */
     @SuppressWarnings("null")
     public static InvocationFilter methods(final String... allowedMethodNames) {
-        return new MethodNameInvocationFilter(Arrays.asList(allowedMethodNames));
+        return new MethodNameInvocationFilter(arrayAsList(allowedMethodNames));
     }
 
     /**
@@ -26,7 +26,7 @@ public final class StandardInvocationFilters {
      */
     @SuppressWarnings("null")
     public static InvocationFilter delegate(final InvocationFilter... filters) {
-        return delegate(Arrays.asList(filters));
+        return delegate(arrayAsList(filters));
     }
 
     /**
@@ -34,8 +34,13 @@ public final class StandardInvocationFilters {
      *            The filtes to delegate to.
      * @return A new invocation filter that filters invocations based on method names.
      */
-    public static InvocationFilter delegate(final List<InvocationFilter> filters) {
+    public static InvocationFilter delegate(final Collection<InvocationFilter> filters) {
         return new DelegatingInvocationFilter(filters);
+    }
+
+    @SuppressWarnings("null")
+    private static <TYPE> Collection<TYPE> arrayAsList(final TYPE[] values) {
+        return Arrays.asList(values);
     }
 
     private StandardInvocationFilters() {
