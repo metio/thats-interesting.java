@@ -12,11 +12,25 @@ import java.util.stream.Stream;
  */
 public final class StandardConverters {
 
+    /** The standard field name that is going hold the class name of the logging interface. */
+    public static final String CLASS               = "class";                                          //$NON-NLS-1$
+
+    /** The standard field name that is going hold the method name of the logging interface. */
+    public static final String METHOD              = "method";                                         //$NON-NLS-1$
+
+    /** The standard field name that is going hold the arguments of the logging interface. */
+    public static final String ARGUMENTS           = "arguments";                                      //$NON-NLS-1$
+
+    /** The standard field name that is going hold the extras of the logging interface. */
+    public static final String EXTRAS              = "extras";                                         //$NON-NLS-1$
+
     /** Default String format template. */
-    public static final String FORMAT_TEMPLATE     = "Class: [%s] Method: [%s] Arguments: %s Extras: %s"; //$NON-NLS-1$
+    @SuppressWarnings("nls")
+    public static final String FORMAT_TEMPLATE     = CLASS + ": [%s] " + METHOD + ": [%s] " + ARGUMENTS
+            + ": %s " + EXTRAS + ": %s";
 
     /** The default name/value template for String based converters. */
-    public static final String NAME_VALUE_TEMPLATE = "%s: %s";                                            //$NON-NLS-1$
+    public static final String NAME_VALUE_TEMPLATE = "%s: %s";                                         //$NON-NLS-1$
 
     /**
      * @return The configured method invocation converter using {@link #FORMAT_TEMPLATE and

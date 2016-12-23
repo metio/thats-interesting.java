@@ -33,14 +33,14 @@ public final class JacksonConverter implements InvocationConverter<String> {
         return convertToString(objectNode);
     }
 
-    @SuppressWarnings({ "nls", "null" })
+    @SuppressWarnings("null")
     private ObjectNode createOutputModel(final Method method, final Object[] args,
             final Map<String, Supplier<Object>> extras) {
         final ObjectNode rootNode = objectMapper.createObjectNode();
 
-        rootNode.put("class", method.getDeclaringClass().getName());
-        rootNode.put("method", method.getName());
-        rootNode.putPOJO("arguments", createArgumentsModel(method.getParameters(), args));
+        rootNode.put(StandardConverters.CLASS, method.getDeclaringClass().getName());
+        rootNode.put(StandardConverters.METHOD, method.getName());
+        rootNode.putPOJO(StandardConverters.ARGUMENTS, createArgumentsModel(method.getParameters(), args));
 
         for (final Entry<String, Supplier<Object>> entry : extras.entrySet()) {
             rootNode.putPOJO(entry.getKey(), entry.getValue().get());
