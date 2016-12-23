@@ -27,7 +27,7 @@ public final class GsonConverter implements InvocationConverter<String> {
     }
 
     @Override
-    @SuppressWarnings("null")
+    @SuppressWarnings({ "null", "nls" })
     public String convert(final Object proxy, final Method method, final Object[] args,
             final Map<String, Supplier<Object>> extras) {
         final StringWriter stringWriter = new StringWriter();
@@ -35,6 +35,8 @@ public final class GsonConverter implements InvocationConverter<String> {
 
         try (final JsonWriter jsonWriter = gson.newJsonWriter(stringWriter)) {
             jsonWriter.beginObject();
+            jsonWriter.name("class").value(method.getDeclaringClass().getName());
+            jsonWriter.name("method").value(method.getName());
             writeParameters(jsonWriter, parameters, args);
             writeExtras(jsonWriter, extras);
             jsonWriter.endObject();
@@ -46,12 +48,16 @@ public final class GsonConverter implements InvocationConverter<String> {
         return stringWriter.toString();
     }
 
+    @SuppressWarnings("nls")
     private void writeParameters(final JsonWriter jsonWriter, final Parameter[] parameters, final Object[] args)
             throws IOException {
+        jsonWriter.name("arguments");
+        jsonWriter.beginObject();
         for (int index = 0; index < args.length; index++) {
             jsonWriter.name(parameters[index].getName());
             jsonWriter.jsonValue(gson.toJson(args[index]));
         }
+        jsonWriter.endObject();
     }
 
     private void writeExtras(final JsonWriter jsonWriter, final Map<String, Supplier<Object>> extras)
