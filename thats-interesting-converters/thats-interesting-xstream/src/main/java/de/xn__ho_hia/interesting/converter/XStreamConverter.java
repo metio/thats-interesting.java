@@ -30,7 +30,6 @@ public final class XStreamConverter implements InvocationConverter<String> {
     public String convert(final Object proxy, final Method method, final Object[] args,
             final Map<String, Supplier<Object>> extras) {
         final Parameter[] parameters = method.getParameters();
-
         final Map<String, Object> namesAndValues = new LinkedHashMap<>();
         for (int index = 0; index < args.length; index++) {
             namesAndValues.put(parameters[index].getName(), args[index]);
