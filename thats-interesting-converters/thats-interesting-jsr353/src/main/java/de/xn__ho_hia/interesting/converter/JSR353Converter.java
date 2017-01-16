@@ -34,14 +34,14 @@ public final class JSR353Converter implements InvocationConverter<String> {
         return convertToString(objectNode);
     }
 
-    @SuppressWarnings({ "nls", "null" })
+    @SuppressWarnings("null")
     private JsonObject createOutputModel(final Method method, final Object[] args,
             final Map<String, Supplier<Object>> extras) {
         return jsonProvider.createObjectBuilder()
-                .add("class", method.getDeclaringClass().getName())
-                .add("method", method.getName())
-                .add("arguments", createArgumentsModel(method.getParameters(), args))
-                .add("extras", createExtrasModel(extras))
+                .add(StandardConverters.CLASS, StandardConverters.getPOIName(method))
+                .add(StandardConverters.METHOD, StandardConverters.getPOIMethodName(method))
+                .add(StandardConverters.ARGUMENTS, createArgumentsModel(method.getParameters(), args))
+                .add(StandardConverters.EXTRAS, createExtrasModel(extras))
                 .build();
     }
 

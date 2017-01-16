@@ -49,11 +49,11 @@ public final class GsonConverter implements InvocationConverter<String> {
     }
 
     private static void writeClass(final JsonWriter jsonWriter, final Method method) throws IOException {
-        jsonWriter.name(StandardConverters.CLASS).value(method.getDeclaringClass().getName());
+        jsonWriter.name(StandardConverters.CLASS).value(StandardConverters.getPOIName(method));
     }
 
     private static void writeMethod(final JsonWriter jsonWriter, final Method method) throws IOException {
-        jsonWriter.name(StandardConverters.METHOD).value(method.getName());
+        jsonWriter.name(StandardConverters.METHOD).value(StandardConverters.getPOIMethodName(method));
     }
 
     private void writeParameters(final JsonWriter jsonWriter, final Parameter[] parameters, final Object[] args)

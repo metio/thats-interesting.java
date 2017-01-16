@@ -25,16 +25,17 @@ public final class MethodInvocationModelConverter implements Converter {
     }
 
     @Override
+    @SuppressWarnings("null")
     public void marshal(final Object source, final HierarchicalStreamWriter writer, final MarshallingContext context) {
         // cast is fine here because XStream checks with '#canConvert' before
         final MethodInvocationModel model = (MethodInvocationModel) source;
 
         writer.startNode(StandardConverters.CLASS);
-        writer.setValue(model.getPOIClass().getName());
+        writer.setValue(StandardConverters.getPOIName(model.getMethod()));
         writer.endNode();
 
         writer.startNode(StandardConverters.METHOD);
-        writer.setValue(model.getMethod().getName());
+        writer.setValue(StandardConverters.getPOIMethodName(model.getMethod()));
         writer.endNode();
 
         writer.startNode(StandardConverters.ARGUMENTS);

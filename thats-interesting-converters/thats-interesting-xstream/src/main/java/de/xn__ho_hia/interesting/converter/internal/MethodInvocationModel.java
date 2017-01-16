@@ -30,13 +30,6 @@ public final class MethodInvocationModel {
     }
 
     /**
-     * @return The class of the POI.
-     */
-    public Class<?> getPOIClass() {
-        return method.getDeclaringClass();
-    }
-
-    /**
      * @return The invoked method.
      */
     public Method getMethod() {

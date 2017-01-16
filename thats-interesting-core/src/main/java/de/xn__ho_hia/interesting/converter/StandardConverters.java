@@ -1,5 +1,6 @@
 package de.xn__ho_hia.interesting.converter;
 
+import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
 import java.util.Map;
@@ -73,6 +74,26 @@ public final class StandardConverters {
                 combineNamesAndValues(method.getParameters(), args),
                 mapToString(extras)
         };
+    }
+
+    /**
+     * @param method
+     *            The invoked POI method.
+     * @return The name of the POI.
+     */
+    @SuppressWarnings("null")
+    public static String getPOIName(final Method method) {
+        return method.getDeclaringClass().getName();
+    }
+
+    /**
+     * @param method
+     *            The invoked POI method.
+     * @return The name of the POI method.
+     */
+    @SuppressWarnings("null")
+    public static String getPOIMethodName(final Method method) {
+        return method.getName();
     }
 
     @SuppressWarnings("null")

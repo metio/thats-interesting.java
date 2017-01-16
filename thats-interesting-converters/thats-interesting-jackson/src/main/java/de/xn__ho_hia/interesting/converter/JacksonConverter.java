@@ -38,8 +38,8 @@ public final class JacksonConverter implements InvocationConverter<String> {
             final Map<String, Supplier<Object>> extras) {
         final ObjectNode rootNode = objectMapper.createObjectNode();
 
-        rootNode.put(StandardConverters.CLASS, method.getDeclaringClass().getName());
-        rootNode.put(StandardConverters.METHOD, method.getName());
+        rootNode.put(StandardConverters.CLASS, StandardConverters.getPOIName(method));
+        rootNode.put(StandardConverters.METHOD, StandardConverters.getPOIMethodName(method));
         rootNode.putPOJO(StandardConverters.ARGUMENTS, createArgumentsModel(method.getParameters(), args));
 
         for (final Entry<String, Supplier<Object>> entry : extras.entrySet()) {
