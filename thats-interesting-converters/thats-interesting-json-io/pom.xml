@@ -2,9 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>de.xn--ho-hia.thats-interesting</groupId>
+    <groupId>wtf.metio.ti</groupId>
     <artifactId>thats-interesting-converters</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>9999.99.99-SNAPSHOT</version>
   </parent>
 
   <artifactId>thats-interesting-json-io</artifactId>
@@ -12,7 +12,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>de.xn--ho-hia.thats-interesting</groupId>
+      <groupId>wtf.metio.ti</groupId>
       <artifactId>thats-interesting-core</artifactId>
       <version>${project.version}</version>
     </dependency>
