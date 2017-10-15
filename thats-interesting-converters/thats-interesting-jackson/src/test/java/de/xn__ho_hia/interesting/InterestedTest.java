@@ -6,17 +6,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import de.xn__ho_hia.interesting.converter.JacksonConverter;
 
-/**
- *
- *
- */
-@RunWith(JUnitPlatform.class)
-public class InterestedTest {
+class InterestedTest {
 
     @Test
     @SuppressWarnings({ "nls", "static-method" })

@@ -6,15 +6,8 @@ import static de.xn__ho_hia.interesting.sink.StandardSinks.systemOut;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
-/**
- *
- *
- */
-@RunWith(JUnitPlatform.class)
-public class InterestedTest {
+class InterestedTest {
 
     @Test
     @SuppressWarnings({ "nls", "static-method" })
