@@ -6,8 +6,7 @@ import java.util.HashMap;
 import de.xn__ho_hia.interesting.builder.LoggerBuilder;
 
 /**
- *
- *
+ * Entry point for users.
  */
 public class Interested {
 
