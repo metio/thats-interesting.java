@@ -1,5 +1,7 @@
 package de.xn__ho_hia.interesting.sink;
 
+import static org.eclipse.jdt.annotation.Checks.requireNonNull;
+
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
@@ -302,9 +304,8 @@ public final class SyslogSinks {
      *            The sink to use.
      * @return A consumer that uses syslog
      */
-    @SuppressWarnings("null")
     public static final Consumer<String> syslog(final String protocol, final BiConsumer<SyslogIF, String> sink) {
-        return msg -> sink.accept(Syslog.getInstance(protocol), msg);
+        return msg -> sink.accept(requireNonNull(Syslog.getInstance(protocol)), msg);
     }
 
     /**

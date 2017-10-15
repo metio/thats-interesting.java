@@ -1,5 +1,7 @@
 package de.xn__ho_hia.interesting.converter;
 
+import static org.eclipse.jdt.annotation.Checks.requireNonNull;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
@@ -66,12 +68,11 @@ public final class StandardConverters {
     /**
      * @return Converter that matches {@link #FORMAT_TEMPLATE}
      */
-    @SuppressWarnings("null")
     public static InvocationConverter<Object[]> standardArgumentsConverter() {
         return (proxy, method, args, extras) -> new Object[] {
                 method.getDeclaringClass().getName(),
                 method.getName(),
-                combineNamesAndValues(method.getParameters(), args),
+                combineNamesAndValues(requireNonNull(method.getParameters()), args),
                 mapToString(extras)
         };
     }
@@ -81,9 +82,8 @@ public final class StandardConverters {
      *            The invoked POI method.
      * @return The name of the POI.
      */
-    @SuppressWarnings("null")
     public static String getPOIName(final Method method) {
-        return method.getDeclaringClass().getName();
+        return requireNonNull(method.getDeclaringClass().getName());
     }
 
     /**
@@ -91,32 +91,29 @@ public final class StandardConverters {
      *            The invoked POI method.
      * @return The name of the POI method.
      */
-    @SuppressWarnings("null")
     public static String getPOIMethodName(final Method method) {
-        return method.getName();
+        return requireNonNull(method.getName());
     }
 
-    @SuppressWarnings("null")
     private static String combineNamesAndValues(final Parameter[] parameters, final Object[] args) {
         final String[] namesAndValues = new String[args.length];
         for (int index = 0; index < args.length; index++) {
-            namesAndValues[index] = formatNameAndValue(parameters[index].getName(), args[index]);
+            namesAndValues[index] = formatNameAndValue(
+                    requireNonNull(parameters[index].getName()), requireNonNull(args[index]));
         }
         return arrayToString(namesAndValues);
     }
 
-    @SuppressWarnings("null")
     private static final String mapToString(final Map<String, Supplier<Object>> extras) {
-        return streamToString(extras.entrySet().stream()
-                .map(entry -> formatNameAndValue(entry.getKey(), entry.getValue().get())));
+        return streamToString(requireNonNull(extras.entrySet().stream()
+                .map(entry -> formatNameAndValue(entry.getKey(), entry.getValue().get()))));
+    }
+
+    private static String formatNameAndValue(final String name, final Object value) {
+        return requireNonNull(String.format(NAME_VALUE_TEMPLATE, name, value));
     }
 
     @SuppressWarnings("null")
-    private static String formatNameAndValue(final String name, final Object value) {
-        return String.format(NAME_VALUE_TEMPLATE, name, value);
-    }
-
-    @SuppressWarnings({ "null" })
     private static final String arrayToString(final String[] arguments) {
         return streamToString(Arrays.stream(arguments));
     }

@@ -4,6 +4,8 @@ import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.function.Supplier;
 
+import org.eclipse.jdt.annotation.Checks;
+
 /**
  * A converter that formats a method invocation according to a string format template.
  */
@@ -26,10 +28,10 @@ public final class StringFormatConverter implements InvocationConverter<String> 
     }
 
     @Override
-    @SuppressWarnings("null")
     public String convert(final Object proxy, final Method method, final Object[] args,
             final Map<String, Supplier<Object>> extras) {
-        return String.format(format, formatArguments.convert(proxy, method, args, extras));
+        return Checks.requireNonNull(
+                String.format(format, formatArguments.convert(proxy, method, args, extras)));
     }
 
 }

@@ -1,5 +1,7 @@
 package de.xn__ho_hia.interesting.sink;
 
+import static org.eclipse.jdt.annotation.Checks.requireNonNull;
+
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
@@ -43,9 +45,8 @@ public final class Slf4jSinks {
      *            The sink to use.
      * @return A consumer that uses Slf4j
      */
-    @SuppressWarnings("null")
     public static final Consumer<String> slf4j(final Class<?> loggerClass, final BiConsumer<Logger, String> sink) {
-        return slf4jSink(LoggerFactory.getLogger(loggerClass), sink);
+        return slf4jSink(requireNonNull(LoggerFactory.getLogger(loggerClass)), sink);
     }
 
     /**

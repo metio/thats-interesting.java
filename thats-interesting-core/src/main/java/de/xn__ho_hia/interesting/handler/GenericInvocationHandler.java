@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import org.eclipse.jdt.annotation.Checks;
+
 import de.xn__ho_hia.interesting.converter.InvocationConverter;
 import de.xn__ho_hia.interesting.filter.InvocationFilter;
 
@@ -32,7 +34,6 @@ public final class GenericInvocationHandler<OUTPUT> extends AbstractNullReturnin
      * @param extras
      *            The extra values to use.
      */
-    @SuppressWarnings("null")
     public GenericInvocationHandler(
             final InvocationFilter filter,
             final InvocationConverter<OUTPUT> converter,
@@ -41,7 +42,7 @@ public final class GenericInvocationHandler<OUTPUT> extends AbstractNullReturnin
         this.filter = filter;
         this.converter = converter;
         this.sink = sink;
-        this.extras = Collections.unmodifiableMap(extras);
+        this.extras = Checks.requireNonNull(Collections.unmodifiableMap(extras));
     }
 
     @Override

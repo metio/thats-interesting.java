@@ -1,5 +1,7 @@
 package de.xn__ho_hia.interesting.filter;
 
+import static org.eclipse.jdt.annotation.Checks.requireNonNull;
+
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -38,9 +40,8 @@ public final class StandardInvocationFilters {
         return new DelegatingInvocationFilter(filters);
     }
 
-    @SuppressWarnings("null")
     private static <TYPE> Collection<TYPE> arrayAsList(final TYPE[] values) {
-        return Arrays.asList(values);
+        return requireNonNull(Arrays.asList(values));
     }
 
     private StandardInvocationFilters() {

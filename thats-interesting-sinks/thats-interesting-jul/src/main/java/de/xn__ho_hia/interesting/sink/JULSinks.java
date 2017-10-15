@@ -1,5 +1,7 @@
 package de.xn__ho_hia.interesting.sink;
 
+import static org.eclipse.jdt.annotation.Checks.requireNonNull;
+
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
@@ -21,9 +23,8 @@ public final class JULSinks {
      *            The sink to use.
      * @return A consumer that uses java.util.logging
      */
-    @SuppressWarnings("null")
     public static final Consumer<String> globalLogger(final BiConsumer<Logger, String> sink) {
-        return logger(Logger.getGlobal(), sink);
+        return logger(requireNonNull(Logger.getGlobal()), sink);
     }
 
     /**
