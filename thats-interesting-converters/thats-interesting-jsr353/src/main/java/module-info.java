@@ -1,4 +1,4 @@
-module wtf.metio.ti.converter.jsr353 {
+module wtf.metio.ti.converter.json_api {
 
     exports wtf.metio.ti.converter.jsr353;
 
