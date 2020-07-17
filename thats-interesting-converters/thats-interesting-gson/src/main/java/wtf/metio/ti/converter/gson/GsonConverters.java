@@ -1,7 +1,6 @@
-package wtf.metio.ti.converter;
+package wtf.metio.ti.converter.gson;
 
 import com.google.gson.Gson;
-
 import wtf.metio.ti.converter.InvocationConverter;
 
 /**
@@ -12,16 +11,15 @@ public final class GsonConverters {
     /**
      * @return The configured method invocation converter.
      */
-    public static final InvocationConverter<String> jsonWithGson() {
+    public static InvocationConverter<String> jsonWithGson() {
         return jsonWithGson(new Gson());
     }
 
     /**
-     * @param gson
-     *            The Gson instance to use.
+     * @param gson The Gson instance to use.
      * @return The configured method invocation converter.
      */
-    public static final InvocationConverter<String> jsonWithGson(final Gson gson) {
+    public static InvocationConverter<String> jsonWithGson(final Gson gson) {
         return new GsonConverter(gson);
     }
 

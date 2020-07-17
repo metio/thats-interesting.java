@@ -7,8 +7,7 @@ import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import wtf.metio.ti.Interested;
-import wtf.metio.ti.converter.GsonConverter;
+import wtf.metio.ti.converter.gson.GsonConverter;
 
 class InterestedTest {
 

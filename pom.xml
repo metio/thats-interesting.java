@@ -20,6 +20,15 @@
   <name>That's Interesting</name>
   <description>Strongly-typed logging framework</description>
 
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                                PROPERTIES                               -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- https://maven.apache.org/pom.html#Properties -->
+  <properties>
+    <version.jdk>14</version.jdk>
+    <project.build.outputTimestamp>2020</project.build.outputTimestamp>
+  </properties>
+
   <modules>
     <module>thats-interesting-core</module>
     <module>thats-interesting-converters</module>

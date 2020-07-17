@@ -1,18 +1,16 @@
-package wtf.metio.ti.converter;
+package wtf.metio.ti.converter.gson;
+
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonWriter;
+import wtf.metio.ti.converter.InvocationConverter;
+import wtf.metio.ti.converter.StandardConverters;
 
 import java.io.IOException;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.function.Supplier;
-
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonWriter;
-
-import wtf.metio.ti.converter.InvocationConverter;
-import wtf.metio.ti.converter.StandardConverters;
 
 /**
  * A converter that formats a method invocation using a Gson instance.
@@ -22,28 +20,28 @@ public final class GsonConverter implements InvocationConverter<String> {
     private final Gson gson;
 
     /**
-     * @param gson
-     *            The Gson instance to use.
+     * @param gson The Gson instance to use.
      */
     public GsonConverter(final Gson gson) {
         this.gson = gson;
     }
 
     @Override
-    @SuppressWarnings("null")
-    public String convert(final Object proxy, final Method method, final Object[] args,
+    public String convert(
+            final Object proxy,
+            final Method method,
+            final Object[] args,
             final Map<String, Supplier<Object>> extras) {
-        final StringWriter stringWriter = new StringWriter();
-        final Parameter[] parameters = method.getParameters();
+        final var stringWriter = new StringWriter();
+        final var parameters = method.getParameters();
 
-        try (final JsonWriter jsonWriter = gson.newJsonWriter(stringWriter)) {
+        try (final var jsonWriter = gson.newJsonWriter(stringWriter)) {
             jsonWriter.beginObject();
             writeClass(jsonWriter, method);
             writeMethod(jsonWriter, method);
             writeParameters(jsonWriter, parameters, args);
             writeExtras(jsonWriter, extras);
             jsonWriter.endObject();
-            jsonWriter.close();
         } catch (final IOException exception) {
             throw new IllegalStateException(exception);
         }
@@ -72,7 +70,7 @@ public final class GsonConverter implements InvocationConverter<String> {
 
     private void writeExtras(final JsonWriter jsonWriter, final Map<String, Supplier<Object>> extras)
             throws IOException {
-        for (final Entry<String, Supplier<Object>> entry : extras.entrySet()) {
+        for (final var entry : extras.entrySet()) {
             jsonWriter.name(entry.getKey());
             jsonWriter.jsonValue(gson.toJson(entry.getValue().get()));
         }

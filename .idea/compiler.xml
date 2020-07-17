@@ -28,28 +28,28 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="thats-interesting-commons-logging" target="11" />
-      <module name="thats-interesting-converters" target="11" />
-      <module name="thats-interesting-core" target="11" />
-      <module name="thats-interesting-elasticsearch" target="11" />
-      <module name="thats-interesting-fastjson" target="11" />
-      <module name="thats-interesting-flume" target="11" />
-      <module name="thats-interesting-genson" target="11" />
-      <module name="thats-interesting-gson" target="11" />
-      <module name="thats-interesting-jackson" target="11" />
-      <module name="thats-interesting-json-io" target="11" />
-      <module name="thats-interesting-jsr353" target="11" />
-      <module name="thats-interesting-jul" target="11" />
-      <module name="thats-interesting-kafka" target="11" />
-      <module name="thats-interesting-log4j" target="11" />
-      <module name="thats-interesting-moshi" target="11" />
-      <module name="thats-interesting-simple" target="11" />
-      <module name="thats-interesting-sinks" target="11" />
-      <module name="thats-interesting-slf4j" target="11" />
-      <module name="thats-interesting-syslog" target="11" />
-      <module name="thats-interesting-tinylog" target="11" />
-      <module name="thats-interesting-xstream" target="11" />
-      <module name="thats-interesting.java" target="11" />
+      <module name="thats-interesting-commons-logging" target="14" />
+      <module name="thats-interesting-converters" target="14" />
+      <module name="thats-interesting-core" target="14" />
+      <module name="thats-interesting-elasticsearch" target="14" />
+      <module name="thats-interesting-fastjson" target="14" />
+      <module name="thats-interesting-flume" target="14" />
+      <module name="thats-interesting-genson" target="14" />
+      <module name="thats-interesting-gson" target="14" />
+      <module name="thats-interesting-jackson" target="14" />
+      <module name="thats-interesting-json-io" target="14" />
+      <module name="thats-interesting-jsr353" target="14" />
+      <module name="thats-interesting-jul" target="14" />
+      <module name="thats-interesting-kafka" target="14" />
+      <module name="thats-interesting-log4j" target="14" />
+      <module name="thats-interesting-moshi" target="14" />
+      <module name="thats-interesting-simple" target="14" />
+      <module name="thats-interesting-sinks" target="14" />
+      <module name="thats-interesting-slf4j" target="14" />
+      <module name="thats-interesting-syslog" target="14" />
+      <module name="thats-interesting-tinylog" target="14" />
+      <module name="thats-interesting-xstream" target="14" />
+      <module name="thats-interesting.java" target="14" />
     </bytecodeTargetLevel>
   </component>
 </project>
