@@ -1,7 +1,6 @@
-package wtf.metio.ti.converter;
+package wtf.metio.ti.converter.jackson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import wtf.metio.ti.converter.InvocationConverter;
 
 /**
@@ -12,16 +11,15 @@ public final class JacksonConverters {
     /**
      * @return The configured method invocation converter.
      */
-    public static final InvocationConverter<String> jsonWithJackson() {
+    public static InvocationConverter<String> jsonWithJackson() {
         return jsonWithJackson(new ObjectMapper());
     }
 
     /**
-     * @param objectMapper
-     *            The object mapper to use.
+     * @param objectMapper The object mapper to use.
      * @return The configured method invocation converter.
      */
-    public static final InvocationConverter<String> jsonWithJackson(final ObjectMapper objectMapper) {
+    public static InvocationConverter<String> jsonWithJackson(final ObjectMapper objectMapper) {
         return new JacksonConverter(objectMapper);
     }
 

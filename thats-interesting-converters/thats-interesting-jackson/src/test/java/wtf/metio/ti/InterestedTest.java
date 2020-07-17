@@ -7,8 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import wtf.metio.ti.Interested;
-import wtf.metio.ti.converter.JacksonConverter;
+import wtf.metio.ti.converter.jackson.JacksonConverter;
 
 class InterestedTest {
 
