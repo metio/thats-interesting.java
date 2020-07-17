@@ -1,13 +1,12 @@
-package wtf.metio.ti.converter;
+package wtf.metio.ti.converter.moshi;
+
+import com.squareup.moshi.Moshi;
+import wtf.metio.ti.converter.InvocationConverter;
 
 import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.function.Supplier;
-
-import com.squareup.moshi.Moshi;
-
-import wtf.metio.ti.converter.InvocationConverter;
 
 /**
  * A converter that formats a method invocation using a {@link Moshi} instance.
@@ -17,17 +16,15 @@ public final class MoshiConverter implements InvocationConverter<String> {
     private final Moshi moshi;
 
     /**
-     * @param moshi
-     *            The Moshi instance to use.
+     * @param moshi The Moshi instance to use.
      */
     public MoshiConverter(final Moshi moshi) {
         this.moshi = moshi;
     }
 
     @Override
-    @SuppressWarnings("null")
     public String convert(final Object proxy, final Method method, final Object[] args,
-            final Map<String, Supplier<Object>> extras) {
+                          final Map<String, Supplier<Object>> extras) {
         final StringWriter stringWriter = new StringWriter();
         moshi.adapter(Object.class);
         // final Parameter[] parameters = method.getParameters();
