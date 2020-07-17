@@ -1,38 +1,33 @@
 package wtf.metio.ti.handler;
 
+import wtf.metio.ti.converter.InvocationConverter;
+import wtf.metio.ti.filter.InvocationFilter;
+
 import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import org.eclipse.jdt.annotation.Checks;
-
-import wtf.metio.ti.converter.InvocationConverter;
-import wtf.metio.ti.filter.InvocationFilter;
+import static java.util.Objects.requireNonNull;
 
 /**
  * Generic invocation handler that calls a converter function and a consumer.
  *
- * @param <OUTPUT>
- *            The type of the logger sink.
+ * @param <OUTPUT> The type of the logger sink.
  */
 public final class GenericInvocationHandler<OUTPUT> extends AbstractNullReturningInvocationHandler {
 
-    private final InvocationFilter              filter;
-    private final InvocationConverter<OUTPUT>   converter;
-    private final Consumer<OUTPUT>              sink;
+    private final InvocationFilter filter;
+    private final InvocationConverter<OUTPUT> converter;
+    private final Consumer<OUTPUT> sink;
     private final Map<String, Supplier<Object>> extras;
 
     /**
-     * @param filter
-     *            The filter to use.
-     * @param converter
-     *            The converter to use.
-     * @param sink
-     *            The sink to use.
-     * @param extras
-     *            The extra values to use.
+     * @param filter    The filter to use.
+     * @param converter The converter to use.
+     * @param sink      The sink to use.
+     * @param extras    The extra values to use.
      */
     public GenericInvocationHandler(
             final InvocationFilter filter,
@@ -42,7 +37,7 @@ public final class GenericInvocationHandler<OUTPUT> extends AbstractNullReturnin
         this.filter = filter;
         this.converter = converter;
         this.sink = sink;
-        this.extras = Checks.requireNonNull(Collections.unmodifiableMap(extras));
+        this.extras = requireNonNull(Collections.unmodifiableMap(extras));
     }
 
     @Override

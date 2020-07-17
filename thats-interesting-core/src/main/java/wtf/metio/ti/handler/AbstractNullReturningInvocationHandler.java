@@ -1,17 +1,17 @@
 package wtf.metio.ti.handler;
 
-import static org.eclipse.jdt.annotation.Checks.requireNonNull;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-import org.eclipse.jdt.annotation.Nullable;
+import static java.util.Objects.requireNonNull;
 
 abstract class AbstractNullReturningInvocationHandler implements InvocationHandler {
 
     @Override
-    public final @Nullable Object invoke(final @Nullable Object proxy, final @Nullable Method method,
-            final Object @Nullable [] args) throws Throwable {
+    public final Object invoke(
+            final Object proxy,
+            final Method method,
+            final Object[] args) throws Throwable {
         invokeHandler(requireNonNull(proxy), requireNonNull(method), requireNonNull(args));
         return null;
     }

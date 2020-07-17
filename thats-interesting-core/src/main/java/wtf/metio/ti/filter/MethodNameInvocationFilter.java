@@ -11,8 +11,7 @@ public final class MethodNameInvocationFilter implements InvocationFilter {
     private final Collection<String> allowedMethodNames;
 
     /**
-     * @param allowedMethodNames
-     *            The names of methods that are allowed to pass this filter.
+     * @param allowedMethodNames The names of methods that are allowed to pass this filter.
      */
     public MethodNameInvocationFilter(final Collection<String> allowedMethodNames) {
         this.allowedMethodNames = allowedMethodNames;

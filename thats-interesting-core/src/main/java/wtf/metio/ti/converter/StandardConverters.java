@@ -1,7 +1,5 @@
 package wtf.metio.ti.converter;
 
-import static org.eclipse.jdt.annotation.Checks.requireNonNull;
-
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
@@ -10,56 +8,66 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.Objects.requireNonNull;
+
 /**
  * Factory for standard converters.
  */
 public final class StandardConverters {
 
-    /** The standard field name that is going hold the class name of the logging interface. */
-    public static final String CLASS               = "class";                                          //$NON-NLS-1$
+    /**
+     * The standard field name that is going hold the class name of the logging interface.
+     */
+    public static final String CLASS = "class";
 
-    /** The standard field name that is going hold the method name of the logging interface. */
-    public static final String METHOD              = "method";                                         //$NON-NLS-1$
+    /**
+     * The standard field name that is going hold the method name of the logging interface.
+     */
+    public static final String METHOD = "method";
 
-    /** The standard field name that is going hold the arguments of the logging interface. */
-    public static final String ARGUMENTS           = "arguments";                                      //$NON-NLS-1$
+    /**
+     * The standard field name that is going hold the arguments of the logging interface.
+     */
+    public static final String ARGUMENTS = "arguments";
 
-    /** The standard field name that is going hold the extras of the logging interface. */
-    public static final String EXTRAS              = "extras";                                         //$NON-NLS-1$
+    /**
+     * The standard field name that is going hold the extras of the logging interface.
+     */
+    public static final String EXTRAS = "extras";
 
-    /** Default String format template. */
-    @SuppressWarnings("nls")
-    public static final String FORMAT_TEMPLATE     = CLASS + ": [%s] " + METHOD + ": [%s] " + ARGUMENTS
+    /**
+     * Default String format template.
+     */
+    public static final String FORMAT_TEMPLATE = CLASS + ": [%s] " + METHOD + ": [%s] " + ARGUMENTS
             + ": %s " + EXTRAS + ": %s";
 
-    /** The default name/value template for String based converters. */
-    public static final String NAME_VALUE_TEMPLATE = "%s: %s";                                         //$NON-NLS-1$
+    /**
+     * The default name/value template for String based converters.
+     */
+    public static final String NAME_VALUE_TEMPLATE = "%s: %s";
 
     /**
      * @return The configured method invocation converter using {@link #FORMAT_TEMPLATE and
-     *         #standardArgumentsConverter()}.
+     * #standardArgumentsConverter()}.
      */
-    public static final InvocationConverter<String> stringFormat() {
+    public static InvocationConverter<String> stringFormat() {
         return new StringFormatConverter(FORMAT_TEMPLATE, standardArgumentsConverter());
     }
 
     /**
-     * @param template
-     *            The format template to use.
+     * @param template The format template to use.
      * @return The configured method invocation converter.
      */
-    public static final InvocationConverter<String> stringFormat(final String template) {
+    public static InvocationConverter<String> stringFormat(final String template) {
         return new StringFormatConverter(template, standardArgumentsConverter());
     }
 
     /**
-     * @param template
-     *            The format template to use.
-     * @param argumentConverter
-     *            The argument converter to use.
+     * @param template          The format template to use.
+     * @param argumentConverter The argument converter to use.
      * @return The configured method invocation converter.
      */
-    public static final InvocationConverter<String> stringFormat(
+    public static InvocationConverter<String> stringFormat(
             final String template,
             final InvocationConverter<Object[]> argumentConverter) {
         return new StringFormatConverter(template, argumentConverter);
@@ -69,7 +77,7 @@ public final class StandardConverters {
      * @return Converter that matches {@link #FORMAT_TEMPLATE}
      */
     public static InvocationConverter<Object[]> standardArgumentsConverter() {
-        return (proxy, method, args, extras) -> new Object[] {
+        return (proxy, method, args, extras) -> new Object[]{
                 method.getDeclaringClass().getName(),
                 method.getName(),
                 combineNamesAndValues(requireNonNull(method.getParameters()), args),
@@ -78,8 +86,7 @@ public final class StandardConverters {
     }
 
     /**
-     * @param method
-     *            The invoked POI method.
+     * @param method The invoked POI method.
      * @return The name of the POI.
      */
     public static String getPOIName(final Method method) {
@@ -87,8 +94,7 @@ public final class StandardConverters {
     }
 
     /**
-     * @param method
-     *            The invoked POI method.
+     * @param method The invoked POI method.
      * @return The name of the POI method.
      */
     public static String getPOIMethodName(final Method method) {
@@ -104,7 +110,7 @@ public final class StandardConverters {
         return arrayToString(namesAndValues);
     }
 
-    private static final String mapToString(final Map<String, Supplier<Object>> extras) {
+    private static String mapToString(final Map<String, Supplier<Object>> extras) {
         return streamToString(requireNonNull(extras.entrySet().stream()
                 .map(entry -> formatNameAndValue(entry.getKey(), entry.getValue().get()))));
     }
@@ -114,12 +120,12 @@ public final class StandardConverters {
     }
 
     @SuppressWarnings("null")
-    private static final String arrayToString(final String[] arguments) {
+    private static String arrayToString(final String[] arguments) {
         return streamToString(Arrays.stream(arguments));
     }
 
-    @SuppressWarnings({ "nls", "null" })
-    private static final String streamToString(final Stream<String> stream) {
+    @SuppressWarnings({"nls", "null"})
+    private static String streamToString(final Stream<String> stream) {
         return stream.collect(Collectors.joining(", ", "[", "]"));
     }
 

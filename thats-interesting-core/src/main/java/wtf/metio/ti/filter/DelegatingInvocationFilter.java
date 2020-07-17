@@ -11,8 +11,7 @@ public final class DelegatingInvocationFilter implements InvocationFilter {
     private final Collection<InvocationFilter> filters;
 
     /**
-     * @param filters
-     *            The filters to use.
+     * @param filters The filters to use.
      */
     public DelegatingInvocationFilter(final Collection<InvocationFilter> filters) {
         this.filters = filters;

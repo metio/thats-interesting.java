@@ -1,37 +1,29 @@
 package wtf.metio.ti.builder;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-
 import wtf.metio.ti.converter.InvocationConverter;
 import wtf.metio.ti.filter.InvocationFilter;
 import wtf.metio.ti.filter.StandardInvocationFilters;
 import wtf.metio.ti.handler.StandardInvocationHandlers;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
 /**
- * @param <LOGGER>
- *            The logger interface to proxy.
+ * @param <LOGGER> The logger interface to proxy.
  */
 public final class LoggerBuilder<LOGGER> {
 
-    private final Class<LOGGER>                 logger;
-    private final List<InvocationHandler>       handlers;
+    private final Class<LOGGER> logger;
+    private final List<InvocationHandler> handlers;
     private final Map<String, Supplier<Object>> extras;
 
     /**
-     * @param logger
-     *            The logger interface to proxy.
-     * @param handlers
-     *            The handlers to invoke.
-     * @param extras
-     *            The static extras to use.
+     * @param logger   The logger interface to proxy.
+     * @param handlers The handlers to invoke.
+     * @param extras   The static extras to use.
      */
     public LoggerBuilder(
             final Class<LOGGER> logger,
@@ -43,10 +35,8 @@ public final class LoggerBuilder<LOGGER> {
     }
 
     /**
-     * @param keyName
-     *            The name of the static extra.
-     * @param value
-     *            The constant value of the extra.
+     * @param keyName The name of the static extra.
+     * @param value   The constant value of the extra.
      * @return The current builder reconfigured with the given extra static value.
      */
     public LoggerBuilder<LOGGER> withStaticExtra(final String keyName, final Object value) {
@@ -54,21 +44,18 @@ public final class LoggerBuilder<LOGGER> {
     }
 
     /**
-     * @param keyName
-     *            The name of the static extra.
-     * @param supplier
-     *            The supplier for the extra value.
+     * @param keyName  The name of the static extra.
+     * @param supplier The supplier for the extra value.
      * @return The current builder reconfigured with the given extra supplied value.
      */
     public LoggerBuilder<LOGGER> withSuppliedExtra(final String keyName,
-            final Supplier<Object> supplier) {
+                                                   final Supplier<Object> supplier) {
         extras.put(keyName, supplier);
         return this;
     }
 
     /**
-     * @param newHandler
-     *            The method invocation handler to use.
+     * @param newHandler The method invocation handler to use.
      * @return A logger builder configured to use the given handler.
      */
     public LoggerBuilder<LOGGER> invocationHandler(final InvocationHandler newHandler) {
@@ -90,7 +77,7 @@ public final class LoggerBuilder<LOGGER> {
     public LOGGER createLogger() {
         return (LOGGER) Proxy.newProxyInstance(
                 logger.getClassLoader(),
-                new Class<?>[] { logger },
+                new Class<?>[]{logger},
                 StandardInvocationHandlers.delegate(handlers));
     }
 
@@ -99,20 +86,18 @@ public final class LoggerBuilder<LOGGER> {
     }
 
     /**
-     * @param <LOGGER>
-     *            The logger interface to proxy.
+     * @param <LOGGER> The logger interface to proxy.
      */
     public static final class InvocationHandlerBuilder<LOGGER> {
 
-        private final LoggerBuilder<LOGGER>         loggerBuilder;
+        private final LoggerBuilder<LOGGER> loggerBuilder;
 
-        private final List<InvocationFilter>        filters = new ArrayList<>();
-        private InvocationConverter<String>         converter;
+        private final List<InvocationFilter> filters = new ArrayList<>();
+        private InvocationConverter<String> converter;
         private final Map<String, Supplier<Object>> extras;
 
         /**
-         * @param loggerBuilder
-         *            The logger builder to use.
+         * @param loggerBuilder The logger builder to use.
          */
         @SuppressWarnings("null")
         public InvocationHandlerBuilder(final LoggerBuilder<LOGGER> loggerBuilder) {
@@ -121,8 +106,7 @@ public final class LoggerBuilder<LOGGER> {
         }
 
         /**
-         * @param newFilters
-         *            The filters to add.
+         * @param newFilters The filters to add.
          * @return The current builder reconfigured with the additional filters.
          */
         @SuppressWarnings("null")
@@ -132,8 +116,7 @@ public final class LoggerBuilder<LOGGER> {
         }
 
         /**
-         * @param newConverter
-         *            The converter to use.
+         * @param newConverter The converter to use.
          * @return The current builder reconfigured with the given converter.
          */
         public InvocationHandlerBuilder<LOGGER> converter(
@@ -143,10 +126,8 @@ public final class LoggerBuilder<LOGGER> {
         }
 
         /**
-         * @param keyName
-         *            The name of the static extra.
-         * @param value
-         *            The constant value of the extra.
+         * @param keyName The name of the static extra.
+         * @param value   The constant value of the extra.
          * @return The current builder reconfigured with the given extra static value.
          */
         public InvocationHandlerBuilder<LOGGER> withStaticExtra(final String keyName, final Object value) {
@@ -154,21 +135,18 @@ public final class LoggerBuilder<LOGGER> {
         }
 
         /**
-         * @param keyName
-         *            The name of the static extra.
-         * @param supplier
-         *            The supplier for the extra value.
+         * @param keyName  The name of the static extra.
+         * @param supplier The supplier for the extra value.
          * @return The current builder reconfigured with the given extra supplied value.
          */
         public InvocationHandlerBuilder<LOGGER> withSuppliedExtra(final String keyName,
-                final Supplier<Object> supplier) {
+                                                                  final Supplier<Object> supplier) {
             extras.put(keyName, supplier);
             return this;
         }
 
         /**
-         * @param sink
-         *            The sinks to use. Has to be more than one.
+         * @param sink The sinks to use. Has to be more than one.
          * @return A newly created logger builder using the given sinks.
          */
         public LoggerBuilder<LOGGER> sinks(final Consumer<String> sink) {

@@ -11,8 +11,7 @@ public final class DelegatingInvocationHandler extends AbstractNullReturningInvo
     private final Iterable<InvocationHandler> handlers;
 
     /**
-     * @param handlers
-     *            The handlers to call.
+     * @param handlers The handlers to call.
      */
     public DelegatingInvocationHandler(final Iterable<InvocationHandler> handlers) {
         this.handlers = handlers;

@@ -4,21 +4,19 @@ import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import org.eclipse.jdt.annotation.Checks;
+import static java.util.Objects.requireNonNull;
 
 /**
  * A converter that formats a method invocation according to a string format template.
  */
 public final class StringFormatConverter implements InvocationConverter<String> {
 
-    private final String                        format;
+    private final String format;
     private final InvocationConverter<Object[]> formatArguments;
 
     /**
-     * @param format
-     *            The format template to use.
-     * @param formatArguments
-     *            The format arguments converter to use.
+     * @param format          The format template to use.
+     * @param formatArguments The format arguments converter to use.
      */
     public StringFormatConverter(
             final String format,
@@ -28,10 +26,12 @@ public final class StringFormatConverter implements InvocationConverter<String> 
     }
 
     @Override
-    public String convert(final Object proxy, final Method method, final Object[] args,
+    public String convert(
+            final Object proxy,
+            final Method method,
+            final Object[] args,
             final Map<String, Supplier<Object>> extras) {
-        return Checks.requireNonNull(
-                String.format(format, formatArguments.convert(proxy, method, args, extras)));
+        return requireNonNull(String.format(format, formatArguments.convert(proxy, method, args, extras)));
     }
 
 }

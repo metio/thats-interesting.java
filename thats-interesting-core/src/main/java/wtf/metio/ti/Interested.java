@@ -1,21 +1,22 @@
 package wtf.metio.ti;
 
+import wtf.metio.ti.builder.LoggerBuilder;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import wtf.metio.ti.builder.LoggerBuilder;
-
 /**
- * Entry point for users.
+ * Factory class for new loggers.
+ *
+ * @see LoggerBuilder
  */
-public class Interested {
+public final class Interested {
 
     /**
-     * @param logger
-     *            The logger interface to proxy.
+     * @param logger The logger interface to proxy.
      * @return A logger builder for the given interface.
      */
-    public static final <LOGGER> LoggerBuilder<LOGGER> in(final Class<LOGGER> logger) {
+    public static <LOGGER> LoggerBuilder<LOGGER> in(final Class<LOGGER> logger) {
         return new LoggerBuilder<>(logger, new ArrayList<>(), new HashMap<>());
     }
 
