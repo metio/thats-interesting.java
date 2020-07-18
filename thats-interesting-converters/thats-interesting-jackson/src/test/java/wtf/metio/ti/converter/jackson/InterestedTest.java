@@ -1,21 +1,18 @@
-package wtf.metio.ti;
-
-import static wtf.metio.ti.sink.StandardSinks.systemOut;
+package wtf.metio.ti.converter.jackson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import wtf.metio.ti.Interested;
 
-import wtf.metio.ti.converter.jackson.JacksonConverter;
+import static wtf.metio.ti.sink.StandardSinks.systemOut;
 
 class InterestedTest {
 
     @Test
-    @SuppressWarnings({ "nls", "static-method" })
     void shouldCreateNonNullProxyForInterface() {
         // given
-        final TestInterface instance = Interested.in(TestInterface.class)
+        final var instance = Interested.in(TestInterface.class)
                 .buildHandler()
                 .converter(new JacksonConverter(new ObjectMapper()))
                 .withStaticExtra("extra-key", "extra-value")
@@ -25,7 +22,7 @@ class InterestedTest {
         // when
         instance.someMethod("test");
 
-        final Pair pair = new Pair();
+        final var pair = new Pair();
         pair.left = "one";
         pair.right = "two";
         instance.otherMethod(pair);
@@ -38,7 +35,7 @@ class InterestedTest {
         Assertions.assertNotNull(instance);
     }
 
-    static interface TestInterface {
+    interface TestInterface {
 
         void someMethod(String someParam);
 
@@ -52,7 +49,6 @@ class InterestedTest {
 
     }
 
-    @SuppressWarnings("null")
     static class Pair {
 
         public String left;

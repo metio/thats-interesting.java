@@ -1,13 +1,11 @@
 package wtf.metio.ti.converter.gson;
 
-import static wtf.metio.ti.sink.StandardSinks.systemOut;
-
 import com.google.gson.Gson;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import wtf.metio.ti.Interested;
+
+import static wtf.metio.ti.sink.StandardSinks.systemOut;
 
 class InterestedTest {
 
