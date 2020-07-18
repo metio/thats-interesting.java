@@ -2,26 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-commons-logging/thats-interesting-commons-logging.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-commons-logging/thats-interesting-commons-logging.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-converters/thats-interesting-converters.iml" filepath="$PROJECT_DIR$/thats-interesting-converters/thats-interesting-converters.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-core/thats-interesting-core.iml" filepath="$PROJECT_DIR$/thats-interesting-core/thats-interesting-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-elasticsearch/thats-interesting-elasticsearch.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-elasticsearch/thats-interesting-elasticsearch.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thats-interesting-converters/thats-interesting-fastjson/thats-interesting-fastjson.iml" filepath="$PROJECT_DIR$/thats-interesting-converters/thats-interesting-fastjson/thats-interesting-fastjson.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-flume/thats-interesting-flume.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-flume/thats-interesting-flume.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thats-interesting-converters/thats-interesting-genson/thats-interesting-genson.iml" filepath="$PROJECT_DIR$/thats-interesting-converters/thats-interesting-genson/thats-interesting-genson.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-converters/thats-interesting-gson/thats-interesting-gson.iml" filepath="$PROJECT_DIR$/thats-interesting-converters/thats-interesting-gson/thats-interesting-gson.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-converters/thats-interesting-jackson/thats-interesting-jackson.iml" filepath="$PROJECT_DIR$/thats-interesting-converters/thats-interesting-jackson/thats-interesting-jackson.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thats-interesting-converters/thats-interesting-json-io/thats-interesting-json-io.iml" filepath="$PROJECT_DIR$/thats-interesting-converters/thats-interesting-json-io/thats-interesting-json-io.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-converters/thats-interesting-jsr353/thats-interesting-jsr353.iml" filepath="$PROJECT_DIR$/thats-interesting-converters/thats-interesting-jsr353/thats-interesting-jsr353.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-jul/thats-interesting-jul.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-jul/thats-interesting-jul.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-kafka/thats-interesting-kafka.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-kafka/thats-interesting-kafka.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-log4j/thats-interesting-log4j.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-log4j/thats-interesting-log4j.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-converters/thats-interesting-moshi/thats-interesting-moshi.iml" filepath="$PROJECT_DIR$/thats-interesting-converters/thats-interesting-moshi/thats-interesting-moshi.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thats-interesting-converters/thats-interesting-simple/thats-interesting-simple.iml" filepath="$PROJECT_DIR$/thats-interesting-converters/thats-interesting-simple/thats-interesting-simple.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-sinks.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-sinks.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-slf4j/thats-interesting-slf4j.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-slf4j/thats-interesting-slf4j.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-syslog/thats-interesting-syslog.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-syslog/thats-interesting-syslog.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-tinylog/thats-interesting-tinylog.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-tinylog/thats-interesting-tinylog.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting.java.iml" filepath="$PROJECT_DIR$/thats-interesting.java.iml" />
     </modules>
   </component>

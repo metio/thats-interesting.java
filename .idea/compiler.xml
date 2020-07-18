@@ -7,23 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="thats-interesting-gson" />
-        <module name="thats-interesting-commons-logging" />
-        <module name="thats-interesting-genson" />
-        <module name="thats-interesting-simple" />
         <module name="thats-interesting-log4j" />
-        <module name="thats-interesting-json-io" />
         <module name="thats-interesting-slf4j" />
         <module name="thats-interesting-core" />
         <module name="thats-interesting-jul" />
-        <module name="thats-interesting-fastjson" />
         <module name="thats-interesting-moshi" />
         <module name="thats-interesting-jackson" />
-        <module name="thats-interesting-elasticsearch" />
-        <module name="thats-interesting-tinylog" />
-        <module name="thats-interesting-syslog" />
-        <module name="thats-interesting-flume" />
         <module name="thats-interesting-jsr353" />
-        <module name="thats-interesting-kafka" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
