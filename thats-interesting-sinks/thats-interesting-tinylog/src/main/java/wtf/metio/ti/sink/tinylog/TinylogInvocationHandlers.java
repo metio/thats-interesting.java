@@ -1,11 +1,11 @@
-package wtf.metio.ti.handler;
+package wtf.metio.ti.sink.tinylog;
 
-import static wtf.metio.ti.handler.StandardInvocationHandlers.stringFormat;
+import org.pmw.tinylog.Logger;
 
 import java.lang.reflect.InvocationHandler;
 import java.util.function.Consumer;
 
-import org.pmw.tinylog.Logger;
+import static wtf.metio.ti.handler.StandardInvocationHandlers.stringFormat;
 
 /**
  * Factory for tinylog based {@link InvocationHandler}s.
@@ -20,8 +20,7 @@ public final class TinylogInvocationHandlers {
     }
 
     /**
-     * @param sink
-     *            The sink to use.
+     * @param sink The sink to use.
      * @return An invocation handler that prints method invocations to tinylog
      */
     public static InvocationHandler tinylog(final Consumer<String> sink) {
