@@ -1,14 +1,12 @@
-package wtf.metio.ti.handler;
+package wtf.metio.ti.sink.slf4j;
 
-import static wtf.metio.ti.handler.StandardInvocationHandlers.stringFormat;
+import org.slf4j.Logger;
+import wtf.metio.ti.handler.StandardInvocationHandlers;
 
 import java.lang.reflect.InvocationHandler;
 import java.util.function.BiConsumer;
 
-import org.slf4j.Logger;
-
-import wtf.metio.ti.handler.StandardInvocationHandlers;
-import wtf.metio.ti.sink.Slf4jSinks;
+import static wtf.metio.ti.handler.StandardInvocationHandlers.stringFormat;
 
 /**
  * Factory for Slf4j based {@link InvocationHandler}s.
@@ -18,8 +16,8 @@ public final class Slf4jInvocationHandlers {
     /**
      * @return An invocation handler that prints method invocations to Slf4j
      */
-    public static final InvocationHandler slf4jInfo() {
-        return slf4j((logger, message) -> logger.info(message));
+    public static InvocationHandler slf4jInfo() {
+        return slf4j(Logger::info);
     }
 
     /**
@@ -27,11 +25,10 @@ public final class Slf4jInvocationHandlers {
      * <code>(logger, message) -> logger.info(message)</code>. The message is constructed using
      * {@link StandardInvocationHandlers#stringFormat(java.util.function.Consumer)}
      *
-     * @param sink
-     *            The sink to use.
+     * @param sink The sink to use.
      * @return An invocation handler that prints method invocations to Slf4j
      */
-    public static final InvocationHandler slf4j(final BiConsumer<Logger, String> sink) {
+    public static InvocationHandler slf4j(final BiConsumer<Logger, String> sink) {
         return stringFormat(Slf4jSinks.slf4j(sink));
     }
 
