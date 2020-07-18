@@ -24,7 +24,10 @@
     <module>thats-interesting-jsr353</module>
     <module>thats-interesting-moshi</module>
     <module>thats-interesting-simple</module>
+    <!-- deactivated because xstream does not support jigsaw yet -->
+    <!--
     <module>thats-interesting-xstream</module>
+    -->
     <!-- TODO: Add Eclipse MOXy -->
     <!-- TODO: Add JAXB -->
     <!-- TODO: Add LoganSquare -->

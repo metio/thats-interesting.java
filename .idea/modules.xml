@@ -22,7 +22,6 @@
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-slf4j/thats-interesting-slf4j.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-slf4j/thats-interesting-slf4j.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-syslog/thats-interesting-syslog.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-syslog/thats-interesting-syslog.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-tinylog/thats-interesting-tinylog.iml" filepath="$PROJECT_DIR$/thats-interesting-sinks/thats-interesting-tinylog/thats-interesting-tinylog.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thats-interesting-converters/thats-interesting-xstream/thats-interesting-xstream.iml" filepath="$PROJECT_DIR$/thats-interesting-converters/thats-interesting-xstream/thats-interesting-xstream.iml" />
       <module fileurl="file://$PROJECT_DIR$/thats-interesting.java.iml" filepath="$PROJECT_DIR$/thats-interesting.java.iml" />
     </modules>
   </component>

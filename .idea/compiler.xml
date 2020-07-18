@@ -18,7 +18,6 @@
         <module name="thats-interesting-fastjson" />
         <module name="thats-interesting-moshi" />
         <module name="thats-interesting-jackson" />
-        <module name="thats-interesting-xstream" />
         <module name="thats-interesting-elasticsearch" />
         <module name="thats-interesting-tinylog" />
         <module name="thats-interesting-syslog" />
