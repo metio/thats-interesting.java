@@ -5,32 +5,38 @@
   ~ in the LICENSE file.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>wtf.metio.ti</groupId>
-    <artifactId>thats-interesting.java</artifactId>
-    <version>9999.99.99-SNAPSHOT</version>
-  </parent>
+    <parent>
+        <groupId>wtf.metio.ti</groupId>
+        <artifactId>thats-interesting.java</artifactId>
+        <version>9999.99.99-SNAPSHOT</version>
+    </parent>
 
-  <artifactId>thats-interesting-sinks</artifactId>
-  <name>That's Interesting :: Sinks</name>
-  <packaging>pom</packaging>
+    <artifactId>thats-interesting-sinks</artifactId>
+    <name>That's Interesting :: Sinks</name>
+    <packaging>pom</packaging>
 
-  <modules>
-    <module>thats-interesting-commons-logging</module>
-    <module>thats-interesting-elasticsearch</module>
-    <module>thats-interesting-flume</module>
-    <module>thats-interesting-jul</module>
-    <module>thats-interesting-log4j</module>
-    <module>thats-interesting-slf4j</module>
-    <!-- external deps have no module-info yet -->
-    <!--
-    <module>thats-interesting-tinylog</module>
-    <module>thats-interesting-syslog</module>
-    <module>thats-interesting-kafka</module>
-    -->
-  </modules>
+    <modules>
+        <module>thats-interesting-jul</module>
+        <module>thats-interesting-log4j</module>
+        <module>thats-interesting-slf4j</module>
+
+        <!-- TODO -->
+        <!--
+        <module>thats-interesting-commons-logging</module>
+        <module>thats-interesting-elasticsearch</module>
+        <module>thats-interesting-flume</module>
+        -->
+
+        <!-- external deps have no module-info yet -->
+        <!--
+        <module>thats-interesting-tinylog</module>
+        <module>thats-interesting-syslog</module>
+        <module>thats-interesting-kafka</module>
+        -->
+    </modules>
 
 </project>

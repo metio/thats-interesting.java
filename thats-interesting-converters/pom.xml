@@ -5,39 +5,46 @@
   ~ in the LICENSE file.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>wtf.metio.ti</groupId>
-    <artifactId>thats-interesting.java</artifactId>
-    <version>9999.99.99-SNAPSHOT</version>
-  </parent>
+    <parent>
+        <groupId>wtf.metio.ti</groupId>
+        <artifactId>thats-interesting.java</artifactId>
+        <version>9999.99.99-SNAPSHOT</version>
+    </parent>
 
-  <artifactId>thats-interesting-converters</artifactId>
-  <name>That's Interesting :: Converters</name>
-  <packaging>pom</packaging>
+    <artifactId>thats-interesting-converters</artifactId>
+    <name>That's Interesting :: Converters</name>
+    <packaging>pom</packaging>
 
-  <modules>
-    <module>thats-interesting-fastjson</module>
-    <module>thats-interesting-genson</module>
-    <module>thats-interesting-gson</module>
-    <module>thats-interesting-jackson</module>
-    <!-- deactivated because of bnd error: The JAR/ZIP file (~/.m2/repository/org/jibx/jibx-run/1.3.1/jibx-run-1.3.1.jar) seems corrupted, error: zip file is empty -->
-    <!--
-    <module>thats-interesting-jibx</module>
-     -->
-    <module>thats-interesting-json-io</module>
-    <module>thats-interesting-jsr353</module>
-    <module>thats-interesting-moshi</module>
-    <module>thats-interesting-simple</module>
-    <!-- deactivated because xstream does not support jigsaw yet -->
-    <!--
-    <module>thats-interesting-xstream</module>
-    -->
-    <!-- TODO: Add Eclipse MOXy -->
-    <!-- TODO: Add JAXB -->
-    <!-- TODO: Add LoganSquare -->
-  </modules>
+    <modules>
+        <module>thats-interesting-gson</module>
+        <module>thats-interesting-jackson</module>
+        <module>thats-interesting-jsr353</module>
+        <module>thats-interesting-moshi</module>
+
+        <!-- TODO -->
+        <!--
+        <module>thats-interesting-fastjson</module>
+        <module>thats-interesting-genson</module>
+        <module>thats-interesting-json-io</module>
+        <module>thats-interesting-simple</module>
+        -->
+
+        <!-- deactivated because of bnd error: The JAR/ZIP file (~/.m2/repository/org/jibx/jibx-run/1.3.1/jibx-run-1.3.1.jar) seems corrupted, error: zip file is empty -->
+        <!--
+        <module>thats-interesting-jibx</module>
+         -->
+
+        <!-- deactivated because xstream does not support jigsaw yet -->
+        <!--
+        <module>thats-interesting-xstream</module>
+        -->
+        <!-- TODO: Add Eclipse MOXy -->
+        <!-- TODO: Add JAXB -->
+        <!-- TODO: Add LoganSquare -->
+    </modules>
 
 </project>
