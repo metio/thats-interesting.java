@@ -1,4 +1,4 @@
-# That's Interesting ![Verify](https://github.com/metio/thats-interesting.java/workflows/Verify/badge.svg)
+# That's Interesting (TI) ![Verify](https://github.com/metio/thats-interesting.java/workflows/Verify/badge.svg)
 
 *That's Interesting* is a strongly typed logging framework targeting applications that want to aggregate their log messages into a central logging system, e.g. a [Elasticsearch](https://www.elastic.co/) cluster.
 

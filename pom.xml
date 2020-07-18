@@ -29,6 +29,23 @@
     <project.build.outputTimestamp>2020</project.build.outputTimestamp>
   </properties>
 
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                          DISTRIBUTION MANAGEMENT                        -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- https://maven.apache.org/pom.html#Distribution_Management -->
+  <distributionManagement>
+    <site>
+      <id>metio</id>
+      <name>official website</name>
+      <url>https://ti.projects.metio.wtf</url>
+    </site>
+    <repository>
+      <id>github</id>
+      <name>GitHub TI Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/metio/thats-interesting.java</url>
+    </repository>
+  </distributionManagement>
+
   <modules>
     <module>thats-interesting-core</module>
     <module>thats-interesting-converters</module>
