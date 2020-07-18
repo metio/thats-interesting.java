@@ -1,10 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <groupId>wtf.metio.ti</groupId>
     <artifactId>thats-interesting-sinks</artifactId>
     <version>9999.99.99-SNAPSHOT</version>
   </parent>
+
   <artifactId>thats-interesting-syslog</artifactId>
   <name>That's Interesting :: Sinks :: syslog</name>
 
