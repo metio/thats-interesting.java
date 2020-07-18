@@ -1,10 +1,10 @@
 # That's Interesting
 
-*That's interesting* is a strongly typed logging framework targeting applications that want to aggregate their log messages into a single system, e.g. a [Elasticsearch](https://www.elastic.co/) cluster.
+*That's Interesting* is a strongly typed logging framework targeting applications that want to aggregate their log messages into a central logging system, e.g. a [Elasticsearch](https://www.elastic.co/) cluster.
 
 ## Usage
 
-The library works by defining logger interfaces (called "point of interest") such as: 
+The library works by defining logger interfaces (called **point of interest**) such as: 
 
 ```java
 package your.own.pkg;
@@ -18,79 +18,99 @@ public interface YourOwnPOI {
 }
 ```
 
-You use that interface together with the `Interested` class like this to create an instance at runtime:
+You use that interface together with the `Interested` class like this to create an instance at runtime and log something that is of interest in your application:
 
-[source, java]
-----
+```java
+package your.own.pkg;
+
 import wtf.metio.ti.Interested;
+import wtf.metio.ti.handler.StandardInvocationHandlers;
 
-YourOwnPOI poi = Interested.in(YourOwnPOI.class)
-                .invocationHandler(systemOut())
+public class YourOwnClass {
+
+    private static final YourOwnPOI poi = Interested.in(YourOwnPOI.class)
+                .invocationHandler(StandardInvocationHandlers.systemOut())
                 .createLogger();
-----
 
-Finally, use the created instance at runtime to log something that is of interest to your application:
+    public void yourBusinessMethod(YourPOJO pojo) {
+        poi.somethingInteresting(pojo);
+    }
 
-[source, java]
-----
-poi.somethingInteresting(pojo);
-----
+    public void yourBusinessWarning(YourCustomer customer) {
+        poi.businessWarning(customer);
+    }
+
+}
+```
 
 With its current default settings the above call will result in something like this on `System.out`:
 
-[source]
-----
+```
 Class: [your.own.package.YourOwnPOI] Method: [somethingInteresting] Arguments: [pojo: {field1: value1, field2: value2}]
-----
+```
 
 You probably don't want to write to `System.out` but log into a file on your filesystem like this:
 
-[source]
-----
-import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.logFile;
+```java
+package your.own.pkg;
 
-import de.xn__ho_hia.interesting.Interested;
+import static wtf.metio.ti.handler.StandardInvocationHandlers.logFile;
+
+import wtf.metio.ti.Interested;
 import java.nio.file.Paths;
 
-YourOwnPOI poi = Interested.in(YourOwnPOI.class)
+public class YourOwnClass {
+
+    private static final YourOwnPOI poi = Interested.in(YourOwnPOI.class)
                 .invocationHandler(logFile(Paths.get("target/file.log")))
                 .createLogger();
-----
+
+}
+```
 
 You can customize the outgoing message like this:
 
-[source]
-----
-import static de.xn__ho_hia.interesting.converter.StandardConverters.stringFormat;
-import static de.xn__ho_hia.interesting.sink.StandardSinks.logFile;
+```java
+package your.own.pkg;
 
-import de.xn__ho_hia.interesting.Interested;
+import static wtf.metio.ti.converter.StandardConverters.stringFormat;
+import static wtf.metio.ti.sink.StandardSinks.logFile;
+
+import wtf.metio.ti.Interested;
 import java.nio.file.Paths;
 
-YourOwnPOI poi = Interested.in(YourOwnPOI.class)
+public class YourOwnClass {
+
+    private static final YourOwnPOI poi = Interested.in(YourOwnPOI.class)
                 .buildHandler()
                 .converter(stringFormat("%s is the class, %s is the method, %s are the args"))
                 .sinks(fileAppender(Paths.get("target/file.log")))
                 .createLogger();
-----
 
-However that is still no fun since you probably want to aggregate all your logs from all your applications in a central place like an Elasticsearch cluster or your next best Kafka broker. Users of the ELK stack can ignore Logstash and push directly into ES like this:
+}
+```
 
-[source, java]
-----
-import static de.xn__ho_hia.interesting.handler.ElasticsearchInvocationHandlers.elasticsearch;
+However, that is still no fun since you probably want to aggregate all your logs from all your applications in a central place like an Elasticsearch cluster, or your next best Kafka broker. Users of the ELK stack can ignore Logstash and push directly into ES like this:
 
-import de.xn__ho_hia.interesting.Interested;
+```java
+package your.own.pkg;
 
-YourOwnPOI poi = Interested.in(YourOwnPOI.class)
+import static wtf.metio.ti.handler.ElasticsearchInvocationHandlers.elasticsearch;
+
+import wtf.metio.ti.Interested;
+
+public class YourOwnClass {
+
+    private static final YourOwnPOI poi = Interested.in(YourOwnPOI.class)
                 .invocationHandler(elasticsearch("localhost:9300", "indexName"))
                 .createLogger();
-----
+
+}
+```
 
 The above configuration sends objects similar to the following JSON:
 
-[source, json]
-----
+```json
 {
   "class": "your.own.package.YourOwnPOI",
   "method": "somethingInteresting",
@@ -101,19 +121,22 @@ The above configuration sends objects similar to the following JSON:
     }
   }
 }
-----
+```
 
 If you want to add additional key-value pairs, do the following:
 
-[source, java]
-----
-import static de.xn__ho_hia.interesting.converter.JacksonConverters.json;
-import static de.xn__ho_hia.interesting.sink.ElasticsearchSinks.elasticsearch;
+```java
+package your.own.pkg;
 
-import de.xn__ho_hia.interesting.Interested;
+import static wtf.metio.ti.converter.JacksonConverters.json;
+import static wtf.metio.ti.sink.ElasticsearchSinks.elasticsearch;
+
+import wtf.metio.ti.Interested;
 import java.time.LocalDateTime;
 
-YourOwnPOI poi = Interested.in(YourOwnPOI.class)
+public class YourOwnClass {
+
+    private static final YourOwnPOI poi = Interested.in(YourOwnPOI.class)
                 .buildHandler()
                 .converter(json())
                 .sinks(elasticsearch("localhost:9300", "indexName"))
@@ -121,12 +144,13 @@ YourOwnPOI poi = Interested.in(YourOwnPOI.class)
                 .withStaticExtra("hostname", "your.custom.domain.tld")
                 .withSuppliedExtra("timestamp", () -> LocalDateTime.now())
                 .createLogger();
-----
+
+}
+```
 
 Which then produces:
 
-[source, json]
-----
+```json
 {
   "class": "your.own.package.YourOwnPOI",
   "method": "somethingInteresting",
@@ -140,19 +164,19 @@ Which then produces:
   "hostname": "your.custom.domain.tld",
   "timestamp": "your-local-date-time"
 }
-----
+```
 
-== Tips & Tricks
+## License
 
-Configuring your points of interest outside of the classes that are using those has the advantage that none of the using classes have a compile time dependency on any classes in this library.
-
-Manage your points of interest in their own source module. Configure your Kibana dashboard according to the interfaces or vice versa.
-
-== License
-
+```
 To the extent possible under law, the author(s) have dedicated all copyright
 and related and neighboring rights to this software to the public domain
 worldwide. This software is distributed without any warranty.
 
 You should have received a copy of the CC0 Public Domain Dedication along
 with this software. If not, see http://creativecommons.org/publicdomain/zero/1.0/.
+```
+
+## Mirrors
+
+- https://github.com/metio/thats-interesting.java

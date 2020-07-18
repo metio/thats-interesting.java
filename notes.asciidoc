@@ -1,3 +1,0 @@
-methods can optionally return (one of multiple predefined) type that allows to add custom message
-otherwise no message is supposed to be given (no strings!)
-binary output?
