@@ -1,4 +1,4 @@
-package wtf.metio.ti;
+package wtf.metio.ti.converter.gson;
 
 import static wtf.metio.ti.sink.StandardSinks.systemOut;
 
@@ -7,15 +7,14 @@ import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import wtf.metio.ti.converter.gson.GsonConverter;
+import wtf.metio.ti.Interested;
 
 class InterestedTest {
 
     @Test
-    @SuppressWarnings({ "nls", "static-method" })
     void shouldCreateNonNullProxyForInterface() {
         // given
-        final TestInterface instance = Interested.in(TestInterface.class)
+        final var logger = Interested.in(TestInterface.class)
                 .buildHandler()
                 .converter(new GsonConverter(new Gson()))
                 .withStaticExtra("extra-key", "extra-value")
@@ -23,22 +22,22 @@ class InterestedTest {
                 .createLogger();
 
         // when
-        instance.someMethod("test"); //$NON-NLS-1$
+        logger.someMethod("test"); //$NON-NLS-1$
 
-        final Pair pair = new Pair();
+        final var pair = new Pair();
         pair.left = "one";
         pair.right = "two";
-        instance.otherMethod(pair);
+        logger.otherMethod(pair);
 
-        instance.thirdMethod("test", pair);
-        instance.thirdMethod("test", pair, 5);
-        instance.thirdMethod("test", pair, 18, false);
+        logger.thirdMethod("test", pair);
+        logger.thirdMethod("test", pair, 5);
+        logger.thirdMethod("test", pair, 18, false);
 
         // then
-        Assertions.assertNotNull(instance);
+        Assertions.assertNotNull(logger);
     }
 
-    static interface TestInterface {
+    interface TestInterface {
 
         void someMethod(String someParam);
 
@@ -52,7 +51,6 @@ class InterestedTest {
 
     }
 
-    @SuppressWarnings("null")
     static class Pair {
 
         public String left;

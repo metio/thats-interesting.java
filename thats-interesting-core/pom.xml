@@ -10,4 +10,21 @@
   <artifactId>thats-interesting-core</artifactId>
   <name>That's Interesting :: Core</name>
 
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <argLine>
+            --add-opens wtf.metio.ti.core/wtf.metio.ti=ALL-UNNAMED
+            --add-opens wtf.metio.ti.core/wtf.metio.ti.builder=ALL-UNNAMED
+            --add-opens wtf.metio.ti.core/wtf.metio.ti.converter=ALL-UNNAMED
+            --add-opens wtf.metio.ti.core/wtf.metio.ti.filter=ALL-UNNAMED
+            --add-opens wtf.metio.ti.core/wtf.metio.ti.sink=ALL-UNNAMED
+          </argLine>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>

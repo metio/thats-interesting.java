@@ -1,31 +1,28 @@
-= That's Interesting
+# That's Interesting
 
-image:https://img.shields.io/badge/license-cc%20zero-000000.svg?style=flat-square["CC Zero", link="http://creativecommons.org/publicdomain/zero/1.0/"]
+*That's interesting* is a strongly typed logging framework targeting applications that want to aggregate their log messages into a single system, e.g. a [Elasticsearch](https://www.elastic.co/) cluster.
 
-*That's interesting* is a strongly typed logging framework targeting applications that want to aggregate their log messages into a single system, such as the ever famous ELK stack.
+## Usage
 
-== Usage
+The library works by defining logger interfaces (called "point of interest") such as: 
 
-The framework works by defining logger interfaces (called "point of interest") such as: 
-
-[source, java]
-----
+```java
 package your.own.pkg;
 
 public interface YourOwnPOI {
 
     void somethingInteresting(YourPOJO pojo);
 
+    void businessWarning(YourCustomer pojo);
+
 }
-----
+```
 
 You use that interface together with the `Interested` class like this to create an instance at runtime:
 
 [source, java]
 ----
-import static de.xn__ho_hia.interesting.handler.StandardInvocationHandlers.systemOut;
-
-import de.xn__ho_hia.interesting.Interested;
+import wtf.metio.ti.Interested;
 
 YourOwnPOI poi = Interested.in(YourOwnPOI.class)
                 .invocationHandler(systemOut())
