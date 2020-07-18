@@ -7,14 +7,12 @@
 
 package wtf.metio.ti;
 
-import static wtf.metio.ti.converter.StandardConverters.stringFormat;
-import static wtf.metio.ti.filter.StandardInvocationFilters.methods;
-import static wtf.metio.ti.sink.StandardSinks.systemOut;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import wtf.metio.ti.Interested;
+import static wtf.metio.ti.converter.StandardConverters.stringFormat;
+import static wtf.metio.ti.filter.StandardInvocationFilters.methods;
+import static wtf.metio.ti.sink.StandardSinks.systemOut;
 
 class InterestedTest {
 
@@ -45,7 +43,7 @@ class InterestedTest {
         Assertions.assertNotNull(instance);
     }
 
-    static interface TestInterface {
+    interface TestInterface {
 
         void someMethod(String someParam);
 
