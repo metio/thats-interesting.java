@@ -23,6 +23,10 @@ import static java.nio.file.StandardOpenOption.CREATE;
  */
 public final class StandardSinks {
 
+    private StandardSinks() {
+        // factory class
+    }
+
     /**
      * @return A consumer that uses System.out
      */
@@ -62,10 +66,6 @@ public final class StandardSinks {
                 throw new CannotAppendFileException(exception);
             }
         };
-    }
-
-    private StandardSinks() {
-        // factory class
     }
 
 }

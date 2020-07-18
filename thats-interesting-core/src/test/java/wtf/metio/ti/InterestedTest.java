@@ -17,7 +17,7 @@ import static wtf.metio.ti.sink.StandardSinks.systemOut;
 class InterestedTest {
 
     @Test
-    @SuppressWarnings({ "nls", "static-method" })
+    @SuppressWarnings({"nls", "static-method"})
     void shouldCreateNonNullProxyForInterface() {
         // given
         final TestInterface instance = Interested.in(TestInterface.class)

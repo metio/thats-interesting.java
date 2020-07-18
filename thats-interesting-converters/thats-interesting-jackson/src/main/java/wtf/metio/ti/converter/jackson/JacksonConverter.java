@@ -33,6 +33,14 @@ public final class JacksonConverter implements InvocationConverter<String> {
         this.objectMapper = objectMapper;
     }
 
+    private static Map<String, Object> createArgumentsModel(final Parameter[] parameters, final Object[] args) {
+        final var argumentsMap = new LinkedHashMap<String, Object>(parameters.length);
+        for (int index = 0; index < args.length; index++) {
+            argumentsMap.put(parameters[index].getName(), args[index]);
+        }
+        return argumentsMap;
+    }
+
     @Override
     public String convert(
             final Object proxy,
@@ -58,14 +66,6 @@ public final class JacksonConverter implements InvocationConverter<String> {
         }
 
         return rootNode;
-    }
-
-    private static Map<String, Object> createArgumentsModel(final Parameter[] parameters, final Object[] args) {
-        final var argumentsMap = new LinkedHashMap<String, Object>(parameters.length);
-        for (int index = 0; index < args.length; index++) {
-            argumentsMap.put(parameters[index].getName(), args[index]);
-        }
-        return argumentsMap;
     }
 
     private String convertToString(final ObjectNode objectNode) {

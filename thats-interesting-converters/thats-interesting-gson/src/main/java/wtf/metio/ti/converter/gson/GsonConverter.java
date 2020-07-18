@@ -33,6 +33,14 @@ public final class GsonConverter implements InvocationConverter<String> {
         this.gson = gson;
     }
 
+    private static void writeClass(final JsonWriter jsonWriter, final Method method) throws IOException {
+        jsonWriter.name(StandardConverters.CLASS).value(StandardConverters.getPOIName(method));
+    }
+
+    private static void writeMethod(final JsonWriter jsonWriter, final Method method) throws IOException {
+        jsonWriter.name(StandardConverters.METHOD).value(StandardConverters.getPOIMethodName(method));
+    }
+
     @Override
     public String convert(
             final Object proxy,
@@ -54,14 +62,6 @@ public final class GsonConverter implements InvocationConverter<String> {
         }
 
         return stringWriter.toString();
-    }
-
-    private static void writeClass(final JsonWriter jsonWriter, final Method method) throws IOException {
-        jsonWriter.name(StandardConverters.CLASS).value(StandardConverters.getPOIName(method));
-    }
-
-    private static void writeMethod(final JsonWriter jsonWriter, final Method method) throws IOException {
-        jsonWriter.name(StandardConverters.METHOD).value(StandardConverters.getPOIMethodName(method));
     }
 
     private void writeParameters(final JsonWriter jsonWriter, final Parameter[] parameters, final Object[] args)

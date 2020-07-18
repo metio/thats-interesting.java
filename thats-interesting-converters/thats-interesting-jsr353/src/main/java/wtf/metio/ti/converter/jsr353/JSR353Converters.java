@@ -16,6 +16,10 @@ import javax.json.spi.JsonProvider;
  */
 public final class JSR353Converters {
 
+    private JSR353Converters() {
+        // factory class
+    }
+
     /**
      * @return The configured method invocation converter.
      */
@@ -29,10 +33,6 @@ public final class JSR353Converters {
      */
     public static InvocationConverter<String> jsonWithJsr353(final JsonProvider jsonProvider) {
         return new JSR353Converter(jsonProvider);
-    }
-
-    private JSR353Converters() {
-        // factory class
     }
 
 }

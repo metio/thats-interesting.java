@@ -15,6 +15,10 @@ import wtf.metio.ti.converter.InvocationConverter;
  */
 public final class JacksonConverters {
 
+    private JacksonConverters() {
+        // factory class
+    }
+
     /**
      * @return The configured method invocation converter.
      */
@@ -28,10 +32,6 @@ public final class JacksonConverters {
      */
     public static InvocationConverter<String> jsonWithJackson(final ObjectMapper objectMapper) {
         return new JacksonConverter(objectMapper);
-    }
-
-    private JacksonConverters() {
-        // factory class
     }
 
 }

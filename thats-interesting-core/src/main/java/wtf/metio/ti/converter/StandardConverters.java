@@ -53,6 +53,10 @@ public final class StandardConverters {
      */
     public static final String NAME_VALUE_TEMPLATE = "%s: %s";
 
+    private StandardConverters() {
+        // factory class
+    }
+
     /**
      * @return The configured method invocation converter using {@link #FORMAT_TEMPLATE and
      * #standardArgumentsConverter()}.
@@ -134,10 +138,6 @@ public final class StandardConverters {
     @SuppressWarnings({"nls", "null"})
     private static String streamToString(final Stream<String> stream) {
         return stream.collect(Collectors.joining(", ", "[", "]"));
-    }
-
-    private StandardConverters() {
-        // factory class
     }
 
 }

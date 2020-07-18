@@ -24,6 +24,10 @@ import java.util.function.Supplier;
  */
 public final class StandardInvocationHandlers {
 
+    private StandardInvocationHandlers() {
+        // factory class
+    }
+
     /**
      * @param handlers The invocation handlers to delegate to.
      * @return An delegating invocation handler that calls all given handlers in order they were given.
@@ -119,10 +123,6 @@ public final class StandardInvocationHandlers {
                 converter,
                 sink,
                 extras);
-    }
-
-    private StandardInvocationHandlers() {
-        // factory class
     }
 
 }

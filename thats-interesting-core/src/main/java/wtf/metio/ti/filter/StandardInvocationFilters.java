@@ -16,6 +16,10 @@ import java.util.Objects;
  */
 public final class StandardInvocationFilters {
 
+    private StandardInvocationFilters() {
+        // factory class
+    }
+
     /**
      * @param allowedMethodNames The names of methods allowed to pass the newly created filter.
      * @return A new invocation filter that filters invocations based on method names.
@@ -42,10 +46,6 @@ public final class StandardInvocationFilters {
 
     private static <TYPE> Collection<TYPE> arrayAsList(final TYPE[] values) {
         return Objects.requireNonNull(Arrays.asList(values));
-    }
-
-    private StandardInvocationFilters() {
-        // factory class
     }
 
 }

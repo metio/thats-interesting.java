@@ -100,8 +100,8 @@ public final class LoggerBuilder<LOGGER> {
         private final LoggerBuilder<LOGGER> loggerBuilder;
 
         private final List<InvocationFilter> filters = new ArrayList<>();
-        private InvocationConverter<String> converter;
         private final Map<String, Supplier<Object>> extras;
+        private InvocationConverter<String> converter;
 
         /**
          * @param loggerBuilder The logger builder to use.
