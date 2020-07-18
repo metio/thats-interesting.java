@@ -60,31 +60,3 @@ test: ##@hacking Run all tests
 sign-waiver: ##@contributing Sign the WAIVER
 	gpg2 --no-version --armor --sign AUTHORS/WAIVER
 	mv AUTHORS/WAIVER.asc AUTHORS/WAIVER-signed-by-$(USERNAME)-$(CURRENT_DATE).asc
-
-.PHONY: release-into-local-nexus
-release-into-local-nexus: ##@release Release all artifacts into a local nexus
-	./mvnw versions:set \
-	   -DnewVersion=$(TIMESTAMPED_VERSION) \
-	   -DgenerateBackupPoms=false
-	-./mvnw clean deploy scm:tag \
-	   -DpushChanges=false \
-	   -DskipLocalStaging=true \
-	   -Drelease=local
-	./mvnw versions:set \
-	   -DnewVersion=9999.99.99-SNAPSHOT \
-	   -DgenerateBackupPoms=false
-
-.PHONY: release-into-sonatype-nexus
-release-into-sonatype-nexus: ##@release Release all artifacts into Maven Central (through Sonatype OSSRH)
-	./mvnw versions:set \
-	   -DnewVersion=$(TIMESTAMPED_VERSION) \
-	   -DgenerateBackupPoms=false
-	-./mvnw clean pgp:sign deploy scm:tag \
-	   -DpushChanges=false \
-	   -Drelease=sonatype
-	-git push \
-	   --tags \
-	   origin master
-	./mvnw versions:set \
-	   -DnewVersion=9999.99.99-SNAPSHOT \
-	   -DgenerateBackupPoms=false
