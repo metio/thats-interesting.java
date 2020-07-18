@@ -130,12 +130,10 @@ public final class StandardConverters {
         return requireNonNull(String.format(NAME_VALUE_TEMPLATE, name, value));
     }
 
-    @SuppressWarnings("null")
     private static String arrayToString(final String[] arguments) {
         return streamToString(Arrays.stream(arguments));
     }
 
-    @SuppressWarnings({"nls", "null"})
     private static String streamToString(final Stream<String> stream) {
         return stream.collect(Collectors.joining(", ", "[", "]"));
     }

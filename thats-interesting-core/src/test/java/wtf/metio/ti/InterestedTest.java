@@ -17,7 +17,6 @@ import static wtf.metio.ti.sink.StandardSinks.systemOut;
 class InterestedTest {
 
     @Test
-    @SuppressWarnings({"nls", "static-method"})
     void shouldCreateNonNullProxyForInterface() {
         // given
         final TestInterface instance = Interested.in(TestInterface.class)
@@ -64,7 +63,6 @@ class InterestedTest {
         }
 
         @Override
-        @SuppressWarnings("null")
         public String toString() {
             return String.format("{left: %s, right: %s}", left, right); //$NON-NLS-1$
         }

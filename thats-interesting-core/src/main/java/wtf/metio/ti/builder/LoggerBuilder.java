@@ -106,7 +106,6 @@ public final class LoggerBuilder<LOGGER> {
         /**
          * @param loggerBuilder The logger builder to use.
          */
-        @SuppressWarnings("null")
         public InvocationHandlerBuilder(final LoggerBuilder<LOGGER> loggerBuilder) {
             this.loggerBuilder = loggerBuilder;
             extras = loggerBuilder.getCopyOfExtras();
@@ -116,7 +115,6 @@ public final class LoggerBuilder<LOGGER> {
          * @param newFilters The filters to add.
          * @return The current builder reconfigured with the additional filters.
          */
-        @SuppressWarnings("null")
         public InvocationHandlerBuilder<LOGGER> filters(final InvocationFilter... newFilters) {
             this.filters.addAll(Arrays.asList(newFilters));
             return this;
