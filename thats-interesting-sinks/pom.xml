@@ -23,11 +23,14 @@
     <module>thats-interesting-elasticsearch</module>
     <module>thats-interesting-flume</module>
     <module>thats-interesting-jul</module>
-    <module>thats-interesting-kafka</module>
     <module>thats-interesting-log4j</module>
     <module>thats-interesting-slf4j</module>
-    <module>thats-interesting-syslog</module>
+    <!-- external deps have no module-info yet -->
+    <!--
     <module>thats-interesting-tinylog</module>
+    <module>thats-interesting-syslog</module>
+    <module>thats-interesting-kafka</module>
+    -->
   </modules>
 
 </project>
