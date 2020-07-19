@@ -54,7 +54,7 @@ You probably don't want to write to `System.out` but log into a file on your fil
 ```java
 package your.own.pkg;
 
-import static wtf.metio.ti.handler.StandardInvocationHandlers.logFile;
+import static wtf.metio.ti.handler.StandardInvocationHandlers.fileAppender;
 
 import wtf.metio.ti.Interested;
 import java.nio.file.Paths;
@@ -62,7 +62,7 @@ import java.nio.file.Paths;
 public class YourOwnClass {
 
     private static final YourOwnPOI poi = Interested.in(YourOwnPOI.class)
-                .invocationHandler(logFile(Paths.get("target/file.log")))
+                .invocationHandler(fileAppender(Paths.get("target/file.log")))
                 .createLogger();
 
 }
@@ -74,7 +74,7 @@ You can customize the outgoing message like this:
 package your.own.pkg;
 
 import static wtf.metio.ti.converter.StandardConverters.stringFormat;
-import static wtf.metio.ti.sink.StandardSinks.logFile;
+import static wtf.metio.ti.sink.StandardSinks.fileAppender;
 
 import wtf.metio.ti.Interested;
 import java.nio.file.Paths;
