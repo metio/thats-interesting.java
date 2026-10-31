@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: The thats-interesting.java Authors
+# SPDX-License-Identifier: CC0-1.0
+
+cff-version: 1.2.0
+title: thats-interesting.java
+message: If you use this software, please cite it as below.
+type: software
+authors:
+- family-names: Hoß
+  given-names: Sebastian
+  email: seb@hoß.de
+url: https://github.com/metio/thats-interesting.java/
+license: CC0-1.0
+keywords:
+  - elasticsearch
+  - fastjson
+  - flume
+  - genson
+  - gson
+  - jackson
+  - java
+  - jsr353
+  - kafka
+  - log4j
+  - logging
+  - moshi
+  - simple-xml
+  - slf4j
+  - syslog
+  - tinylog
